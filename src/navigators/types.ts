@@ -16,3 +16,7 @@ export type AuthenticationNavigatorStackParamList = {
 export type ProfileNavigatorStackParamList = {
    ProfileScreen : undefined,
 }
+
+export type SurveyDataNavigatorStackParamList = {
+   SurveyDataScreen : undefined,
+}

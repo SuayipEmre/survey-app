@@ -1,15 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const HomeScreen = () => {
+const SurveyDataScreen = () => {
   return (
-    <View style={{backgroundColor:'#fff',
-     flex:1,}}>
-      <Text>HomeScreen</Text>
+    <View>
+      <Text>SurveryDataScreen</Text>
     </View>
   )
 }
 
-export default HomeScreen
+export default SurveyDataScreen
 
 const styles = StyleSheet.create({})
