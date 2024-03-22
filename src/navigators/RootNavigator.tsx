@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { MainStack } from './MainStack';
 import { ProfileStack } from './ProfileStack';
 import { AuthenticationStack } from './AuthenticationStack';
-import { Dimensions, useColorScheme } from 'react-native';
+import { Dimensions, View, useColorScheme } from 'react-native';
 import { Colors } from '../style/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
 import SurveyDataScreen from '../screens/surveyDataScreen';
@@ -22,6 +22,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { useUserSession } from '../store/features/auth/hooks';
 import { getUserSession } from '../utils/getUserSession';
 import { setUserSession } from '../store/features/auth/actions';
+import { TabBarSurveyIcon } from '../icons/tabBarSurveyIcon';
 
 
 type NativeStackNavigatorParamList = {
@@ -64,42 +65,57 @@ const RootNavigator: React.FC = () => {
           initialRouteName="MainNavigator"
           screenOptions={{
             tabBarHideOnKeyboard: true,
-            tabBarShowLabel: false,
-            tabBarActiveTintColor: '#5c3ebc',
+            tabBarActiveTintColor: '#9593FF',
             tabBarInactiveTintColor: color.secondary,
             tabBarStyle: {
               backgroundColor: color.primary,
               position: 'absolute',
               bottom: 30,
-              left: 30,
-              right: 30,
-              borderRadius: 20,
-              height: 70,
+              width : 340,
+              left: (width - 340) / 2,
+              borderRadius: 40,
+              height: 80,
+              alignItems: 'center',
+              justifyContent: 'center'
             },
           }}>
           <Tab.Screen
             name="SurveyDataNavigator"
             component={SurveyDataScreen}
-            options={{}}
+            options={{
+              tabBarLabel: 'Anket',
+              tabBarIcon: ({ color, size }) => (
+                <TabBarSurveyIcon color={color} size={size} />
+              )
+            }}
           />
 
           <Tab.Screen
             name="MainNavigator"
             component={MainStack}
             options={{
+              tabBarLabel: '',
               tabBarItemStyle: {
                 position: 'absolute',
-                bottom: 20,
-                height: 50,
+                top : -20,
+                left: (340 - 50) / 2,
                 width: 50,
-                left: width / 2.8,
+                height: 50,
                 borderRadius: 25,
-                backgroundColor: color.primary,
+            
               },
-              tabBarActiveTintColor: '#fff',
-              tabBarActiveBackgroundColor: color.primary,
-              tabBarIcon: ({ color, size }) => (
-                <Entypo name="home" color={color} size={size} />
+              tabBarIcon: (props) => (
+                <View style={{
+                  width: 50,
+                  height: 50,
+                  borderRadius: 25,
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  backgroundColor: props.focused ? '#0300A3' : color.primary
+
+                }}>
+                  <Entypo name="home" color={'#ffffff'}  size={20} />
+                </View>
               ),
             }}
           />
@@ -107,12 +123,14 @@ const RootNavigator: React.FC = () => {
             name="ProfileNavigator"
             component={ProfileStack}
             options={{
-              tabBarLabel: 'Profile',
+              tabBarLabel: 'Profil',
+
               tabBarIcon: ({ color, size }) => (
                 <>
                   <FontAwesome name="user" color={color} size={size} />
                 </>
               ),
+
             }}
           />
         </Tab.Navigator>
