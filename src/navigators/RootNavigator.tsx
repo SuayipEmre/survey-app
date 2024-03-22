@@ -37,10 +37,11 @@ type BottomNavigatorRootStackParamList = {
   ProfileNavigator: NavigatorScreenParams<ProfileNavigatorStackParamList>;
 }
 
-const { width, height } = Dimensions.get('window')
+const { width } = Dimensions.get('window')
 
 const RootNavigator: React.FC = () => {
-  const theme = useColorScheme();
+  const theme = useColorScheme()
+  const color = Colors[theme!]
 
   const userSession = useUserSession()
 
@@ -48,16 +49,13 @@ const RootNavigator: React.FC = () => {
 
   useEffect(() => {
 
-
     const getUser = async () => {
       const userSession = await getUserSession()
       setUserSession(userSession)
-
     }
     getUser()
 
   }, [])
-  const color = Colors[theme!];
 
   if (userSession) {
     return (

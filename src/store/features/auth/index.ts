@@ -1,13 +1,9 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { UserSessionType } from "../../../types/userSessionType";
 
 
 type initialStateTypes = {
     userSession: UserSessionType | null
-}
-
-type UserSessionType = {
-    password : string,
-    username : string
 }
 
 

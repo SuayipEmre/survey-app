@@ -8,6 +8,8 @@ import { AuthenticationNavigatorStackParamList } from '../../navigators/types';
 import AuthScreensContentContainer from '../../containers/AuthScreensContainer';
 import { useSendLoginRequestMutation } from '../../Services/LoginService';
 import { saveUserSessionToStorage } from '../../utils/saveUserSessionToStorage';
+import { setUserSession } from '../../store/features/auth/actions';
+import { UserSessionType } from '../../types/userSessionType';
 
 
 type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>
@@ -19,7 +21,7 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   const [sendLoginRequest, { isError, isLoading, data }] = useSendLoginRequestMutation()
 
   const handleLoginRequest = async () => {
-    const credentials = {
+    const credentials  = {
       username: username,
       password: password
     }
@@ -29,6 +31,7 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
     try {
       await sendLoginRequest(credentials)
       await saveUserSessionToStorage(credentials)
+      setUserSession(credentials)
       console.log('trying')
 
 
