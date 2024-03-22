@@ -1,22 +1,17 @@
 
 import React from 'react';
-import {
-
-  useColorScheme,
-} from 'react-native';
 import RootNavigator from './src/navigators/RootNavigator';
-import { SafeAreaView } from 'react-native-safe-area-context';
-
+import { Provider } from 'react-redux';
+import store from './src/store/app/store';
 
 
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark'
-
-
 
   return (
+    <Provider store={store}>
       <RootNavigator />
+    </Provider>
   )
 }
 

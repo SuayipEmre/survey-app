@@ -4,7 +4,7 @@ import styles from './styles'
 
 type ButtonPropsType = {
     text: string
-    onPress : () => void
+    onPress : () =>   Promise<void> | void
 }
 const Button: React.FC<ButtonPropsType> = ({text, onPress}) => {
     return (

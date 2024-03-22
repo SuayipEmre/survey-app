@@ -15,6 +15,8 @@ type AuthenticationInputPropsType = {
     labelText: string;
     subText?: string;
     isIconWillShow?: boolean;
+    value?: string,
+    onChangeText?: (value: string) => void
 }
 
 
@@ -23,29 +25,34 @@ const AuthenticationFormInput: React.FC<AuthenticationInputPropsType> = ({
     labelText,
     isIconWillShow,
     subText,
+    value,
+    onChangeText
 }) => {
     const theme = useColorScheme()
     const color = Colors[theme!]
 
 
     const c = {
-        light : {
-            bg : '#fff'
-            
+        light: {
+            bg: '#fff'
+
         },
-        dark :{
-            bg : '#000'
+        dark: {
+            bg: '#000'
         }
     }
 
     return (
         <View style={styles.container}>
-            <Text style={[{color : color.primary}, styles.label_text]}>{labelText}</Text>
+            <Text style={[{ color: color.primary }, styles.label_text]}>{labelText}</Text>
             <View>
                 <TextInput
+                    value={value}
                     secureTextEntry={isSecure}
-                    style={[{backgroundColor:c[theme!].bg}, styles.input]}
+                    style={[{ backgroundColor: c[theme!].bg }, styles.input]}
                     selectionColor={color.primary}
+                    onChangeText={onChangeText}
+
                 />
                 {isIconWillShow && (
                     <Entypo

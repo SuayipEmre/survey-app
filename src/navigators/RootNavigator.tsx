@@ -10,7 +10,7 @@ import {
   ProfileNavigatorStackParamList,
   SurveyDataNavigatorStackParamList,
 } from './types';
-import {useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MainStack } from './MainStack';
 import { ProfileStack } from './ProfileStack';
 import { AuthenticationStack } from './AuthenticationStack';
@@ -19,6 +19,9 @@ import { Colors } from '../style/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
 import SurveyDataScreen from '../screens/surveyDataScreen';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import { useUserSession } from '../store/features/auth/hooks';
+import { getUserSession } from '../utils/getUserSession';
+import { setUserSession } from '../store/features/auth/actions';
 
 
 type NativeStackNavigatorParamList = {
@@ -39,11 +42,24 @@ const { width, height } = Dimensions.get('window')
 const RootNavigator: React.FC = () => {
   const theme = useColorScheme();
 
-  const [user, setUser] = useState(false)
+  const userSession = useUserSession()
 
+
+
+  useEffect(() => {
+
+
+    const getUser = async () => {
+      const userSession = await getUserSession()
+      setUserSession(userSession)
+
+    }
+    getUser()
+
+  }, [])
   const color = Colors[theme!];
 
-  if (user) {
+  if (userSession) {
     return (
       <NavigationContainer>
         <Tab.Navigator
