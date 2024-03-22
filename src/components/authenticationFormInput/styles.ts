@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    content: {
+    container: {
         width: '70%',
         gap: 6,
     },

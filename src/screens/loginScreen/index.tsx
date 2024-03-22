@@ -14,29 +14,37 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AuthenticationFormInput from '../../components/authenticationFormInput';
 import Button from '../../components/button';
-import AccountActions from '../../components/authenticationAccountActions';
+import AccountActions from '../../components/authAccountActions';
 import BackgroundImage from '../../components/backgroundImage';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AuthenticationNavigatorStackParamList } from '../../navigators/types';
+import AuthenticationScreensContainer from '../../containers/AuthScreensContainer';
 
 
-const LoginScreen = () => {
-  const theme = useColorScheme();
 
-  const color = Colors[theme!];
+type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>
+
+const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
+
+  const theme = useColorScheme()
+
+  const color = Colors[theme!]
 
   return (
     <>
       <BackgroundImage />
-      <View style={styles.content}>
+
+      <AuthenticationScreensContainer>
         <AuthenticationFormInput labelText='Nickname' subText='Gizliliğinizi önemsiyoruz. Lütfen ad ve soyad girmeden nickname oluşturunuz.' />
-        <AuthenticationFormInput labelText='Şifre' subText='Şifremi Unuttum' isSecure />
+        <AuthenticationFormInput labelText='Şifre' subText='Şifremi Unuttum' isSecure  isIconWillShow/>
 
         <Button text='Giriş Yap' />
 
-        <AccountActions text='Üye değil misiniz ? ' buttonText='Hesap Oluştur' onPress={() => { }} />
-      </View>
+        <AccountActions text='Üye değil misiniz ? ' buttonText='Hesap Oluştur' onPress={() => navigation.navigate('SignupScreen')} />
+      </AuthenticationScreensContainer>
     </>
-  );
-};
+  )
+}
 
 export default LoginScreen;
 
@@ -48,17 +56,6 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     zIndex: -2,
   },
-  content: {
-    position: 'absolute',
-    bottom: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    borderTopLeftRadius: 24,
-    borderTopRightRadius: 24,
-    width: '100%',
-    height: '60%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 12,
-  },
+
 
 })
