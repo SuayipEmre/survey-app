@@ -33,7 +33,6 @@ const AuthenticationFormInput: React.FC<AuthenticationInputPropsType> = ({
                 <TextInput
                     secureTextEntry={isSecure}
                     style={styles.input}
-                    placeholder="Kullanıcı adı"
                     placeholderTextColor="gray"
                 />
                 {isIconWillShow && (
