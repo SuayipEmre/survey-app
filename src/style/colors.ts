@@ -2,7 +2,7 @@
 
 export const Colors = {
     light: {
-        primary: '#000',
+        primary: '#1d1d1b',
         secondary: '#eeee',
         third : '#0300A3',
         tabbar:{

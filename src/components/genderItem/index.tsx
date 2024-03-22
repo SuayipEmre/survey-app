@@ -1,12 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, useColorScheme } from 'react-native'
 import React from 'react'
+import { Colors } from '../../style/colors'
 
 type GenderItemPropsTypes = {
     gender: string
 }
 const GenderItem: React.FC<GenderItemPropsTypes> = ({ gender }) => {
+    
+    const theme = useColorScheme()
+
+    const color = {
+        light : {
+            bg : '#fff'
+            
+        },
+        dark :{
+            bg : '#000'
+        }
+    }
     return (
-        <View style={styles.container}>
+        <View style={[{backgroundColor:  color[theme!].bg}, styles.container]}>
             <Text style={styles.genre_text}>{gender}</Text>
         </View>
     )
@@ -16,7 +29,6 @@ export default GenderItem
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
         width: '40%',
         paddingVertical: 14,
         paddingHorizontal: 10,
