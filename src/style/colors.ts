@@ -4,7 +4,7 @@ export const Colors = {
     light: {
         primary: '#000',
         secondary: '#eeee',
-        third : 'blue',
+        third : '#0300A3',
         tabbar:{
             activeTint : '#fff',
             inActiveTint :'#fff6'

@@ -37,7 +37,7 @@ const {width, height} = Dimensions.get('window');
 const RootNavigator: React.FC = () => {
   const theme = useColorScheme();
 
-  const [user, setUser] = useState(true);
+  const [user, setUser] = useState(false)
 
   const color = Colors[theme!];
 
@@ -87,7 +87,6 @@ const RootNavigator: React.FC = () => {
               ),
             }}
           />
-
           <Tab.Screen
             name="ProfileNavigator"
             component={ProfileStack}
