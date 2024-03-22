@@ -1,38 +1,40 @@
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   NavigationContainer,
   NavigatorScreenParams,
 } from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   AuthenticationNavigatorStackParamList,
   MainNavigatorStackParamList,
   ProfileNavigatorStackParamList,
   SurveyDataNavigatorStackParamList,
 } from './types';
-import {useEffect, useState} from 'react';
-import {MainStack} from './MainStack';
-import {ProfileStack} from './ProfileStack';
-import {AuthenticationStack} from './AuthenticationStack';
-import {Dimensions, Text, View, useColorScheme} from 'react-native';
-import {Colors} from '../style/colors';
+import {useState } from 'react';
+import { MainStack } from './MainStack';
+import { ProfileStack } from './ProfileStack';
+import { AuthenticationStack } from './AuthenticationStack';
+import { Dimensions, useColorScheme } from 'react-native';
+import { Colors } from '../style/colors';
 import Entypo from 'react-native-vector-icons/Entypo';
 import SurveyDataScreen from '../screens/surveyDataScreen';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
+
+
 type NativeStackNavigatorParamList = {
   AuthenticationNavigator: NavigatorScreenParams<AuthenticationNavigatorStackParamList>;
 };
 
-const Tab = createBottomTabNavigator<BottomNavigatorRootStackParamList>();
-const Stack = createNativeStackNavigator<NativeStackNavigatorParamList>();
+const Tab = createBottomTabNavigator<BottomNavigatorRootStackParamList>()
+const Stack = createNativeStackNavigator<NativeStackNavigatorParamList>()
 
 type BottomNavigatorRootStackParamList = {
   MainNavigator: NavigatorScreenParams<MainNavigatorStackParamList>;
   SurveyDataNavigator: NavigatorScreenParams<SurveyDataNavigatorStackParamList>;
   ProfileNavigator: NavigatorScreenParams<ProfileNavigatorStackParamList>;
-};
+}
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window')
 
 const RootNavigator: React.FC = () => {
   const theme = useColorScheme();
@@ -82,7 +84,7 @@ const RootNavigator: React.FC = () => {
               },
               tabBarActiveTintColor: '#fff',
               tabBarActiveBackgroundColor: color.primary,
-              tabBarIcon: ({color, size}) => (
+              tabBarIcon: ({ color, size }) => (
                 <Entypo name="home" color={color} size={size} />
               ),
             }}
@@ -92,7 +94,7 @@ const RootNavigator: React.FC = () => {
             component={ProfileStack}
             options={{
               tabBarLabel: 'Profile',
-              tabBarIcon: ({color, size}) => (
+              tabBarIcon: ({ color, size }) => (
                 <>
                   <FontAwesome name="user" color={color} size={size} />
                 </>

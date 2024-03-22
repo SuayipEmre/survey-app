@@ -1,8 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { AuthenticationNavigatorStackParamList, MainNavigatorStackParamList, ProfileNavigatorStackParamList } from './types';
-import LoginScreen from '../screens/loginScreen';
-import SignUpScreen from '../screens/signupScreen';
-import HomeScreen from '../screens/homeScreen';
+import { ProfileNavigatorStackParamList } from './types';
 import ProfileScreen from '../screens/profileScreen';
 
 
