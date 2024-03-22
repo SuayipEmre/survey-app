@@ -5,11 +5,13 @@ import BackgroundImage from '../../components/backgroundImage'
 import Button from '../../components/button'
 import DataPolicyAgreementSwitchItem from '../../components/dataPolicyAgreementSwitchItem'
 import { Colors } from '../../style/colors'
+import { useTranslation } from 'react-i18next'
 
 const PDPLScreen = () => {
     const theme = useColorScheme()
     const color = Colors[theme!]
     const [isEnabled, setIsEnabled] = useState(false)
+    const{t} = useTranslation()
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
     const firstSwitchText = "*Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and?"
@@ -27,7 +29,7 @@ const PDPLScreen = () => {
                     width: '80%',
                     alignItems: 'center',
                 }}>
-                    <Text style={[{color : color.primary},styles.title]}>Hassas veriler hakkında</Text>
+                    <Text style={[{color : color.primary},styles.title]}>{t('sensitiveDataMessage')}</Text>
                     <Text style={{ fontSize: 12, fontWeight: '400', textAlign: 'center' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's</Text>
 
 
@@ -36,7 +38,7 @@ const PDPLScreen = () => {
                     <DataPolicyAgreementSwitchItem value={isEnabled} onChange={toggleSwitch} text={thirdSwitchText} />
 
                 </View>
-                <Button text='İLERLE' onPress={() => { }} />
+                <Button text={t('moveForward')} onPress={() => { }} />
 
 
             </AuthScreensContentContainer>

@@ -1,0 +1,18 @@
+{
+    "welcome": "Hoşgeldiniz",
+    "privacyMessage": "Gizliliğinizi önemsiyoruz. Lütfen ad ve soyad girmeden nickname oluşturunuz.",
+    "password": "Şifre",
+    "forgotPassword" : "Şifremi Unuttum",
+    "createAccount" : "Hesap Oluştur",
+    "notMember" : "Üye değil misiniz?",
+    "login" : "Giriş Yap",
+    "selectGender" : "Cinsiyetinizi seçin",
+    "woman" : "Kadın",
+    "man" : "Erkek",
+    "birthday" : "Doğum Tarihi",
+    "moveForward" : "İlerle",
+    "haveAccount" : "Hesabınız Var Mı?",
+    "sensitiveDataMessage" : "Hassas Veriler Hakkında",
+    "agree" : "Kabul Ediyorum"
+
+}
