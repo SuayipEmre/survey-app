@@ -6,8 +6,8 @@ import {
     useColorScheme,
 } from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
 import styles from './styles'
+import { Colors } from '../../style/colors';
 
 
 type AuthenticationInputPropsType = {
@@ -26,14 +26,26 @@ const AuthenticationFormInput: React.FC<AuthenticationInputPropsType> = ({
 }) => {
     const theme = useColorScheme()
     const color = Colors[theme!]
+
+
+    const c = {
+        light : {
+            bg : '#fff'
+            
+        },
+        dark :{
+            bg : '#000'
+        }
+    }
+
     return (
         <View style={styles.container}>
-            <Text style={styles.label_text}>{labelText}</Text>
+            <Text style={[{color : color.primary}, styles.label_text]}>{labelText}</Text>
             <View>
                 <TextInput
                     secureTextEntry={isSecure}
-                    style={styles.input}
-                    placeholderTextColor="gray"
+                    style={[{backgroundColor:c[theme!].bg}, styles.input]}
+                    selectionColor={color.primary}
                 />
                 {isIconWillShow && (
                     <Entypo

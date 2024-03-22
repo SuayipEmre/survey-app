@@ -1,11 +1,14 @@
-import { StyleSheet, Switch, Text, View } from 'react-native'
+import { StyleSheet, Switch, Text, View, useColorScheme } from 'react-native'
 import React, { useState } from 'react'
 import AuthScreensContentContainer from '../../containers/AuthScreensContainer'
 import BackgroundImage from '../../components/backgroundImage'
 import Button from '../../components/button'
 import DataPolicyAgreementSwitchItem from '../../components/dataPolicyAgreementSwitchItem'
+import { Colors } from '../../style/colors'
 
 const PDPLScreen = () => {
+    const theme = useColorScheme()
+    const color = Colors[theme!]
     const [isEnabled, setIsEnabled] = useState(false)
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
@@ -24,7 +27,7 @@ const PDPLScreen = () => {
                     width: '80%',
                     alignItems: 'center',
                 }}>
-                    <Text style={styles.title}>Hassas veriler hakkında</Text>
+                    <Text style={[{color : color.primary},styles.title]}>Hassas veriler hakkında</Text>
                     <Text style={{ fontSize: 12, fontWeight: '400', textAlign: 'center' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's</Text>
 
 
@@ -47,7 +50,6 @@ const styles = StyleSheet.create({
     title: {
         fontWeight: '700',
         fontSize: 14,
-        color: '#1d1d1b',
         marginVertical: 7,
     },
     options_container: {

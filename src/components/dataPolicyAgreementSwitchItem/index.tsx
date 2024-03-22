@@ -1,5 +1,6 @@
-import { StyleSheet, Switch, Text, View } from 'react-native'
+import { StyleSheet, Switch, Text, View, useColorScheme } from 'react-native'
 import React from 'react'
+import { Colors } from '../../style/colors'
 
 
 type DataPolicyAgreementropsType = {
@@ -9,6 +10,10 @@ type DataPolicyAgreementropsType = {
     text : string
 }
 const DataPolicyAgreementSwitchItem : React.FC<DataPolicyAgreementropsType> = ({isRequiredField, onChange, value, text}) => {
+    const theme = useColorScheme()
+    const color = Colors[theme!]
+  
+    
     return (
         <View style={styles.container}>
 
@@ -19,10 +24,10 @@ const DataPolicyAgreementSwitchItem : React.FC<DataPolicyAgreementropsType> = ({
                 onValueChange={isRequiredField ? null : onChange}
                 value={isRequiredField ? true : value}
             />
-            <Text style={styles.text}>
+            <Text style={[{color: color.primary},styles.text]}>
                 {text}
                 {
-                    isRequiredField && <Text style={{ fontWeight: '700' }}>Kabul ediyorum</Text>
+                    isRequiredField && <Text style={{ fontWeight: '700', marginLeft:4, }}>Kabul ediyorum</Text>
                 }
             </Text>
         </View>
@@ -41,7 +46,6 @@ const styles = StyleSheet.create({
     },
     text: {
         width:'80%',
-        color: '#1d1d1b',
         fontWeight: '400',
         fontSize: 12,
         textAlign:'left',
