@@ -34,8 +34,8 @@ const Stack = createNativeStackNavigator<NativeStackNavigatorParamList>()
 
 type BottomNavigatorRootStackParamList = {
   MainNavigator: NavigatorScreenParams<MainNavigatorStackParamList>;
-  SurveyDataNavigator: NavigatorScreenParams<SurveyDataNavigatorStackParamList>;
-  ProfileNavigator: NavigatorScreenParams<ProfileNavigatorStackParamList>;
+  SurveyDataNavigator: NavigatorScreenParams<SurveyDataNavigatorStackParamList>
+  ProfileNavigator: NavigatorScreenParams<ProfileNavigatorStackParamList>
 }
 
 const { width } = Dimensions.get('window')
@@ -58,7 +58,7 @@ const RootNavigator: React.FC = () => {
 
   }, [])
 
-  if (userSession) {
+  if (!userSession) {
     return (
       <NavigationContainer>
         <Tab.Navigator

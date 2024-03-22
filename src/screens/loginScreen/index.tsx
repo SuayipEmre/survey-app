@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import AuthenticationFormInput from '../../components/authenticationFormInput';
 import Button from '../../components/button';
 import AccountActions from '../../components/authAccountActions';
@@ -10,6 +10,9 @@ import { useSendLoginRequestMutation } from '../../Services/LoginService';
 import { saveUserSessionToStorage } from '../../utils/saveUserSessionToStorage';
 import { setUserSession } from '../../store/features/auth/actions';
 import { UserSessionType } from '../../types/userSessionType';
+import { useTranslation } from 'react-i18next';
+import { StyleSheet, Text, useColorScheme } from 'react-native';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>
@@ -17,6 +20,10 @@ type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStack
 const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const { t } = useTranslation()
+  const theme = useColorScheme()
+  const color = Colors[theme!]
+
 
   const [sendLoginRequest, { isError, isLoading, data }] = useSendLoginRequestMutation()
 
@@ -26,26 +33,16 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
       password: password
     }
 
-    console.log('posting...');
-
     try {
       await sendLoginRequest(credentials)
       await saveUserSessionToStorage(credentials)
       setUserSession(credentials)
-      console.log('trying')
-
 
     } catch (e) {
       console.log('error', e)
 
     }
   }
-  console.log(data);
-
-
-
-
-
 
 
 
@@ -53,26 +50,28 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
     <>
       <BackgroundImage />
 
+
       <AuthScreensContentContainer>
+      <Text style={[{color : color.primary}, styles.title]}>{t('welcome')}</Text>
         <AuthenticationFormInput
           labelText='Nickname'
-          subText='Gizliliğinizi önemsiyoruz. Lütfen ad ve soyad girmeden nickname oluşturunuz.'
+          subText={t('privacyMessage')}
           value={username}
           onChangeText={setUsername}
         />
 
         <AuthenticationFormInput
-          labelText='Şifre'
-          subText='Şifremi Unuttum'
+          labelText={t('password')}
+          subText={t('forgotPassword')}
           isSecure
           isIconWillShow
           value={password}
           onChangeText={setPassword}
         />
 
-        <Button text='Giriş Yap' onPress={handleLoginRequest} />
+        <Button text={t('login')} onPress={handleLoginRequest} />
 
-        <AccountActions text='Üye değil misiniz ? ' buttonText='Hesap Oluştur' onPress={() => navigation.navigate('SignupScreen')} />
+        <AccountActions text={t('notMember')} buttonText={t('createAccount')} onPress={() => navigation.navigate('SignupScreen')} />
       </AuthScreensContentContainer>
     </>
   )
@@ -81,3 +80,11 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
 export default LoginScreen;
 
 
+
+const styles = StyleSheet.create({
+  title : {
+    fontWeight :'700',
+    lineHeight : 22.3,
+    fontSize :20,
+  }
+})

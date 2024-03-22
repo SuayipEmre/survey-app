@@ -10,32 +10,35 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { AuthenticationNavigatorStackParamList } from '../../navigators/types'
 import GenderItem from '../../components/genderItem'
 import AuthScreensContentContainer from '../../containers/AuthScreensContainer'
+import { useTranslation } from 'react-i18next'
 
 type SignUpScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'SignupScreen'>
 
 const SignUpScreen  : React.FC<SignUpScreenPropsTypes> = ({navigation}) => {
+  const{t}  = useTranslation()
+
   return (
     <View>
       <BackgroundImage />
       <AuthScreensContentContainer>
 
         <View style={{width: '70%'}}>
-          <Text style={styles.select_gender_title}>Cinsiyetinizi Seçiniz</Text>
+          <Text style={styles.select_gender_title}>{t('selectGender')}</Text>
 
           <View style={styles.gender_item_container}>
-           <GenderItem  gender='Kadın'/>
-           <GenderItem  gender='Erkek'/>
+           <GenderItem  gender={t('woman')}/>
+           <GenderItem  gender={t('man')}/>
           </View>
 
         </View>
 
         <AuthenticationFormInput labelText='E-Mail' />
-        <AuthenticationFormInput labelText='Nickname' subText='Gizliliğinizi önemsiyoruz. Lütfen ad ve soyad girmeden nickname oluşturunuz.' />
-        <AuthenticationFormInput labelText='Şifre' isSecure isIconWillShow  />
-        <AuthenticationFormInput labelText='Doğum Tarihi'  />
+        <AuthenticationFormInput labelText='Nickname' subText={t('privacyMessage')} />
+        <AuthenticationFormInput labelText={t('password')} isSecure isIconWillShow  />
+        <AuthenticationFormInput labelText={t('birthday')}  />
 
-        <Button text='İLERLE'  onPress={() => navigation.navigate('PDPLScreen')} />
-        <AccountActions text='Hesabınız Var Mı ?' buttonText='Giriş Yap' onPress={() =>navigation.goBack()}  />
+        <Button text={t('moveForward')}  onPress={() => navigation.navigate('PDPLScreen')} />
+        <AccountActions text={t('haveAccount')} buttonText={t('login')} onPress={() =>navigation.goBack()}  />
       </AuthScreensContentContainer>
     </View>
   )

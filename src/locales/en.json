@@ -1,0 +1,17 @@
+{
+    "welcome": "Welcome",
+    "privacyMessage": "We value your privacy. Please create a nickname without entering your full name.",
+    "password": "Password",
+    "forgotPassword" : "Forgot Password",
+    "createAccount" : "Create Account",
+    "notMember" : "Not a Member?",
+    "login" : "Login",
+    "selectGender" : "Select Your Gender",
+    "woman" : "Woman",
+    "man" : "Man",
+    "birthday" : "Birthday",
+    "moveForward" : "Move Forward",
+    "haveAccount" : "Have a account?",
+    "sensitiveDataMessage" : "About Sensitive Data",
+    "agree" : "I Agree"
+}
