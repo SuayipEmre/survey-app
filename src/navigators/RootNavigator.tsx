@@ -64,6 +64,7 @@ const RootNavigator: React.FC = () => {
         <Tab.Navigator
           initialRouteName="MainNavigator"
           screenOptions={{
+            headerShown: false,
             tabBarHideOnKeyboard: true,
             tabBarActiveTintColor: '#9593FF',
             tabBarInactiveTintColor: color.secondary,
@@ -75,7 +76,6 @@ const RootNavigator: React.FC = () => {
               left: (width - 340) / 2,
               borderRadius: 40,
               height: 80,
-              alignItems: 'center',
               justifyContent: 'center'
             },
           }}>

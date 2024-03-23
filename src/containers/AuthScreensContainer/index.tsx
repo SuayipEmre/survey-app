@@ -1,7 +1,6 @@
 import { View, useColorScheme } from 'react-native'
 import React from 'react'
 import styles from './styles'
-import { Colors } from '../../style/colors'
 
 type AuthenticationScreensContainerPropsType = {
     children: React.ReactNode

@@ -2,7 +2,7 @@
 
 
 export type MainNavigatorStackParamList = {
-   HomeScreen: undefined
+   LandingScreen: undefined
 }
 
 

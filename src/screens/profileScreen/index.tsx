@@ -24,8 +24,8 @@ const ProfileScreen = () => {
     <SafeAreaView style={{
     }}>
       <ScrollView contentContainerStyle={{
-        alignItems:'center'
-      }}>
+        alignItems:'center',
+}}>
         <View style={styles.container}>
 
           <View style={styles.header}>
@@ -67,8 +67,9 @@ const { width, height } = Dimensions.get('window')
 const styles = StyleSheet.create({
   container: {
     width: width * 0.9,
-    gap: 20,
-    marginTop: 50,
+    gap: 10,
+    marginVertical: 50,
+
   },
   header: {
     flexDirection: 'row',

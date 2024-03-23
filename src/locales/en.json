@@ -22,5 +22,7 @@
     "termsAndConditions" : "Terms And Conditions",
     "changeLanguage" : "Change Language",
     "app" : "App",
-    "activeLanguage" : "Active Language"
+    "activeLanguage" : "Active Language",
+    "hello" : "Hello",
+    "startSurvey" : "Start Survey"
 }

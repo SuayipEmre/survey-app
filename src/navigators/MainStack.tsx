@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {  MainNavigatorStackParamList } from './types';
-import HomeScreen from '../screens/homeScreen';
+import LandingScreen from '../screens/landingScreen';
 
 
 const Stack = createNativeStackNavigator<MainNavigatorStackParamList>()
@@ -9,10 +9,10 @@ const Stack = createNativeStackNavigator<MainNavigatorStackParamList>()
 export const MainStack: React.FC = () => {
 
   return (
-    <Stack.Navigator initialRouteName='HomeScreen' > 
+    <Stack.Navigator initialRouteName='LandingScreen' > 
       <Stack.Screen
-        name='HomeScreen'
-        component={HomeScreen}
+        name='LandingScreen'
+        component={LandingScreen}
         options={{
           headerShown: false
         }}

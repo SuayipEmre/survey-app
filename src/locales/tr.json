@@ -22,5 +22,7 @@
     "termsAndConditions" : "Şartlar ve Koşullar",
     "changeLanguage" : "Dili Değiştir",
     "app" : "Uygulama",
-    "activeLanguage" : "Aktif Dil"
+    "activeLanguage" : "Aktif Dil",
+    "hello" : "Merhaba",
+    "startSurvey" : "Ankete Başla"
 }
