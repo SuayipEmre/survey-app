@@ -58,7 +58,7 @@ const RootNavigator: React.FC = () => {
 
   }, [])
 
-  if (!userSession) {
+  if (userSession) {
     return (
       <NavigationContainer>
         <Tab.Navigator
@@ -124,7 +124,7 @@ const RootNavigator: React.FC = () => {
             component={ProfileStack}
             options={{
               tabBarLabel: 'Profil',
-
+              headerShown :false,
               tabBarIcon: ({ color, size }) => (
                 <>
                   <FontAwesome name="user" color={color} size={size} />

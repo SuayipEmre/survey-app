@@ -4,9 +4,9 @@ import styles from './styles'
 
 type ButtonPropsType = {
     text: string
-    onPress : () =>   Promise<void> | void
+    onPress: () => Promise<void> | void
 }
-const Button: React.FC<ButtonPropsType> = ({text, onPress}) => {
+const Button: React.FC<ButtonPropsType> = ({ text, onPress }) => {
     return (
         <TouchableOpacity style={styles.button} onPress={onPress}>
             <Text style={styles.button_text}>{text}</Text>

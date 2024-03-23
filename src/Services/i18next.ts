@@ -12,7 +12,7 @@ i18next
     .init({
         compatibilityJSON : 'v3',
         fallbackLng: 'en',
-        lng:'en',
+        lng:'tr',
         resources : languageResources
     })
 

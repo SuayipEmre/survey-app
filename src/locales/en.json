@@ -13,5 +13,14 @@
     "moveForward" : "Move Forward",
     "haveAccount" : "Have a account?",
     "sensitiveDataMessage" : "About Sensitive Data",
-    "agree" : "I Agree"
+    "agree" : "I Agree",
+    "profile" :"PROFILE",
+    "accountInfo" : "Account Informations",
+    "gender" : "Gender",
+    "aboutUs" : "About Us",
+    "privacyPolicy" : "Privacy Policy",
+    "termsAndConditions" : "Terms And Conditions",
+    "changeLanguage" : "Change Language",
+    "app" : "App",
+    "activeLanguage" : "Active Language"
 }

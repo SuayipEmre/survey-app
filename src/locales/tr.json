@@ -13,6 +13,14 @@
     "moveForward" : "İlerle",
     "haveAccount" : "Hesabınız Var Mı?",
     "sensitiveDataMessage" : "Hassas Veriler Hakkında",
-    "agree" : "Kabul Ediyorum"
-
+    "agree" : "Kabul Ediyorum",
+    "profile" :"PROFİL",
+    "accountInfo" : "Hesap Bilgileri",
+    "gender" : "Cinsiyet",
+    "aboutUs" : "Hakkımızda",
+    "privacyPolicy" : "Gizlilik Politikası",
+    "termsAndConditions" : "Şartlar ve Koşullar",
+    "changeLanguage" : "Dili Değiştir",
+    "app" : "Uygulama",
+    "activeLanguage" : "Aktif Dil"
 }
