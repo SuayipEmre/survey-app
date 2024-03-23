@@ -8,10 +8,18 @@ type ProfileSectionItemPropsTypes = {
     title: string,
     subText?: string,
     isAboutUsSection?: boolean
-    ischangeLanguageSection?: boolean,
-    setLanguage? : () => void
+    isAppSection?: boolean,
+    isLogOutButton?: boolean,
+    onPress?: () => void | Promise<void>
 }
-const ProfileSectionItem: React.FC<ProfileSectionItemPropsTypes> = ({ subText, title, isAboutUsSection, ischangeLanguageSection, setLanguage }) => {
+const ProfileSectionItem: React.FC<ProfileSectionItemPropsTypes> = ({
+    subText,
+    title,
+    isAboutUsSection,
+    isAppSection,
+    onPress,
+    isLogOutButton
+}) => {
     const theme = useColorScheme()
     const color = Colors[theme!]
     return (
@@ -19,38 +27,42 @@ const ProfileSectionItem: React.FC<ProfileSectionItemPropsTypes> = ({ subText, t
 
             <View style={styles.section_lef_side}>
                 <Text style={[{ color: color.primary }, isAboutUsSection ? styles.aboutUsText : styles.title]}>
-                    {title} 
-                    </Text>
-                    
-                    {
-                         !isAboutUsSection && !ischangeLanguageSection &&  <Text style={styles.sub_text}>{subText ?? 'test@test'}</Text>
-                    }
+                    {title}
+                </Text>
+
+                {
+                    !isAboutUsSection && !isAppSection && <Text style={styles.sub_text}>{subText ?? 'test@test'}</Text>
+                }
             </View>
 
             {
-                !isAboutUsSection && !ischangeLanguageSection && <EditIcon color='#0300A3' size={17} />
+                !isAboutUsSection && !isAppSection && <EditIcon color='#0300A3' size={17} />
             }
 
             {
-                ischangeLanguageSection && (
-                    <TouchableOpacity  style={{
-                        flexDirection:'row',
-                        gap:4,
-                        width : 200,
-                        justifyContent:'flex-end',
-                        alignItems:'center',
-                        height :'100%'
+                isAppSection && (
+                    <TouchableOpacity style={{
+                        flexDirection: 'row',
+                        gap: 4,
+                        width: 200,
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        height: '100%'
 
                     }}
-                     activeOpacity={.8}
-                     onPress={setLanguage}
-                     >
-                        
-                        <Text style={{fontSize : 13, lineHeight: 13.38, fontFamily :'Comfortaa-Regular',}}>{i18n.language}</Text>
-                        <Ant name='right' color={'#000'} size={17} />
+                        activeOpacity={.8}
+                        onPress={onPress}
+                    >
+                        {
+                            !isLogOutButton ? <>
+
+                                <Text style={{ fontSize: 13, lineHeight: 13.38, fontFamily: 'Comfortaa-Regular', }}>{i18n.language}</Text>
+                                <Ant name='right' color={'#000'} size={17} />
+                            </> : <Ant name='logout' color={'red'} size={17}/>
+                        }
                     </TouchableOpacity>
                 )
-            }
+            } 
         </View>
     )
 }
@@ -82,24 +94,24 @@ const styles = StyleSheet.create({
     },
 
     section_lef_side: {
-        height :'100%',
-        justifyContent:'center',
+        height: '100%',
+        justifyContent: 'center',
     },
 
     title: {
         ...base_style.title_text,
         fontWeight: '500',
-        fontFamily :'Comfortaa-Medium',
-        
+        fontFamily: 'Comfortaa-Medium',
+
     },
     aboutUsText: {
         ...base_style.title_text,
         color: '#0300A3',
         fontWeight: '400',
-        fontFamily :'Comfortaa-Regular',
+        fontFamily: 'Comfortaa-Regular',
     },
     sub_text: {
-        fontFamily :'Comfortaa-Regular',
+        fontFamily: 'Comfortaa-Regular',
         fontSize: 10,
         fontWeight: '400',
         lineHeight: 11.15,

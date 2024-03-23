@@ -6,6 +6,7 @@ import { ProfileIcon } from '../../icons/userIcon'
 import { Colors } from '../../style/colors'
 import ProfileSectionItem from '../../components/profileSectionItem'
 import { useUserSession } from '../../store/features/auth/hooks'
+import { removeUserSession } from '../../utils/removeUserSessionFromStorage'
 
 const ProfileScreen = () => {
   const [lang, setLang] = useState('en')
@@ -18,6 +19,10 @@ const ProfileScreen = () => {
   const setLanguage = async () => {
     setLang(prev => prev == 'en' ? 'tr' : 'en')
     await i18n.changeLanguage(lang)
+  }
+
+  const handleLogout = async() => {
+    await removeUserSession()
   }
 
   return (
@@ -46,7 +51,8 @@ const ProfileScreen = () => {
 
           <Text style={styles.section_title}>{t('app')}</Text>
 
-          <ProfileSectionItem title={t('changeLanguage')} ischangeLanguageSection setLanguage={setLanguage} />
+          <ProfileSectionItem title={t('changeLanguage')} isAppSection onPress={setLanguage} />
+          <ProfileSectionItem title={t('logout')} isAppSection isLogOutButton onPress={handleLogout} />
 
 
           <Text style={styles.section_title}>{t('aboutUs')}</Text>

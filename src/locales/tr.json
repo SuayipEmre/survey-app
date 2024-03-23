@@ -24,5 +24,6 @@
     "app" : "Uygulama",
     "activeLanguage" : "Aktif Dil",
     "hello" : "Merhaba",
-    "startSurvey" : "Ankete Başla"
+    "startSurvey" : "Ankete Başla",
+    "logout" : "Çıkış Yap"
 }

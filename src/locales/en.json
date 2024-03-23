@@ -24,5 +24,6 @@
     "app" : "App",
     "activeLanguage" : "Active Language",
     "hello" : "Hello",
-    "startSurvey" : "Start Survey"
+    "startSurvey" : "Start Survey",
+    "logout" : "Logout"
 }
