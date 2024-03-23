@@ -1,20 +1,16 @@
-import { Dimensions, SafeAreaView, StyleSheet, Text, View, useColorScheme } from 'react-native'
+import { Dimensions, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import BackgroundImage from '../../components/backgroundImage'
 import { useUserSession } from '../../store/features/auth/hooks'
 import { useTranslation } from 'react-i18next'
-import { Colors } from '../../style/colors'
 import Button from '../../components/button'
+import { useThemeColor } from '../../store/features/theme/hooks'
 
 const LandingScreen = () => {
   const user = useUserSession()
   const { t } = useTranslation()
-  const theme = useColorScheme()
-  const color = Colors[theme!]
-
-
-
-
+  const color = useThemeColor()
+  
   return (
     <>
       <BackgroundImage />

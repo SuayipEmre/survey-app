@@ -10,7 +10,7 @@ import {
   ProfileNavigatorStackParamList,
   SurveyDataNavigatorStackParamList,
 } from './types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { MainStack } from './MainStack';
 import { ProfileStack } from './ProfileStack';
 import { AuthenticationStack } from './AuthenticationStack';
@@ -23,6 +23,7 @@ import { useUserSession } from '../store/features/auth/hooks';
 import { getUserSession } from '../utils/getUserSession';
 import { setUserSession } from '../store/features/auth/actions';
 import { TabBarSurveyIcon } from '../icons/tabBarSurveyIcon';
+import { useThemeColor } from '../store/features/theme/hooks';
 
 
 type NativeStackNavigatorParamList = {
@@ -42,7 +43,7 @@ const { width } = Dimensions.get('window')
 
 const RootNavigator: React.FC = () => {
   const theme = useColorScheme()
-  const color = Colors[theme!]
+  const color = useThemeColor()
 
   const userSession = useUserSession()
 
@@ -58,6 +59,7 @@ const RootNavigator: React.FC = () => {
 
   }, [])
 
+
   if (userSession) {
     return (
       <NavigationContainer>
@@ -66,8 +68,8 @@ const RootNavigator: React.FC = () => {
           screenOptions={{
             headerShown: false,
             tabBarHideOnKeyboard: true,
-            tabBarActiveTintColor: '#9593FF',
-            tabBarInactiveTintColor: color.secondary,
+            tabBarActiveTintColor: theme == 'light' ? '#9593FF' : '#A0A0FF',
+            tabBarInactiveTintColor: theme == 'light' ? '#fff': '#000',
             tabBarStyle: {
               backgroundColor: color.primary,
               position: 'absolute',
@@ -104,14 +106,14 @@ const RootNavigator: React.FC = () => {
                 borderRadius: 25,
             
               },
-              tabBarIcon: (props) => (
+              tabBarIcon: ({focused}) => (
                 <View style={{
                   width: 50,
                   height: 50,
                   borderRadius: 25,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: props.focused ? '#0300A3' : color.primary
+                  backgroundColor: focused ? color.midblue : color.primary
 
                 }}>
                   <Entypo name="home" color={'#ffffff'}  size={20} />

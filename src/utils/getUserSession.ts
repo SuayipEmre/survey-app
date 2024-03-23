@@ -1,5 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
+/**
+ * Retrieves user session data from device storage.
+ * @returns {Promise<Object | null>} -  if there is a user session on storage return user data and redirect user to main stack. If there is no user information on storage, redirect user to auth stack.
+ */
+
 export const getUserSession = async () => {
     try {
         const userData = await AsyncStorage.getItem('userSession');

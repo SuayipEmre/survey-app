@@ -11,10 +11,10 @@ const AuthScreensContentContainer: React.FC<AuthenticationScreensContainerPropsT
     
     const color= {
         light : {
-            bg : 'rgba(255, 255, 255, 0.5)'
+            bg : 'rgba(255, 255, 255, 0.5)' // #ffffff8
         },
         dark : {
-            bg : 'rgba(0, 0, 0, 0.5)'
+            bg : 'rgba(0, 0, 0, 0.5)' // #00000080
         }
     }
     return (
