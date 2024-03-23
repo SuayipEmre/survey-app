@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     button: {
+        
         width: '40%',
         backgroundColor: '#0300A3',
         padding: 12,
@@ -9,6 +10,7 @@ export default StyleSheet.create({
         borderRadius: 20,
     },
     button_text: {
+        fontFamily :'Comfortaa-SemiBold',
         color: '#fff',
         fontWeight: '600',
         fontSize: 14,

@@ -21,8 +21,9 @@ const ProfileSectionItem: React.FC<ProfileSectionItemPropsTypes> = ({ subText, t
                 <Text style={[{ color: color.primary }, isAboutUsSection ? styles.aboutUsText : styles.title]}>
                     {title} 
                     </Text>
+                    
                     {
-                         !isAboutUsSection && !ischangeLanguageSection &&  <Text style={styles.sub_text}>{subText}</Text>
+                         !isAboutUsSection && !ischangeLanguageSection &&  <Text style={styles.sub_text}>{subText ?? 'test@test'}</Text>
                     }
             </View>
 
@@ -38,14 +39,14 @@ const ProfileSectionItem: React.FC<ProfileSectionItemPropsTypes> = ({ subText, t
                         width : 200,
                         justifyContent:'flex-end',
                         alignItems:'center',
-
                         height :'100%'
 
                     }}
                      activeOpacity={.8}
                      onPress={setLanguage}
                      >
-                        <Text style={{fontSize : 13,      lineHeight: 13.38,}}>{i18n.language}</Text>
+                        
+                        <Text style={{fontSize : 13, lineHeight: 13.38, fontFamily :'Comfortaa-Regular',}}>{i18n.language}</Text>
                         <Ant name='right' color={'#000'} size={17} />
                     </TouchableOpacity>
                 )
@@ -87,14 +88,18 @@ const styles = StyleSheet.create({
 
     title: {
         ...base_style.title_text,
-        fontWeight: '500'
+        fontWeight: '500',
+        fontFamily :'Comfortaa-Medium',
+        
     },
     aboutUsText: {
         ...base_style.title_text,
         color: '#0300A3',
-        fontWeight: '400'
+        fontWeight: '400',
+        fontFamily :'Comfortaa-Regular',
     },
     sub_text: {
+        fontFamily :'Comfortaa-Regular',
         fontSize: 10,
         fontWeight: '400',
         lineHeight: 11.15,

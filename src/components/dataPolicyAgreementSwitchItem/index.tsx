@@ -29,7 +29,7 @@ const DataPolicyAgreementSwitchItem : React.FC<DataPolicyAgreementropsType> = ({
             <Text style={[{color: color.primary},styles.text]}>
                 {text}
                 {
-                    isRequiredField && <Text style={{ fontWeight: '700', marginLeft:4, }}>{t('agree')}</Text>
+                    isRequiredField && <Text style={styles.agree_text}>{t('agree')}</Text>
                 }
             </Text>
         </View>
@@ -47,9 +47,12 @@ const styles = StyleSheet.create({
         marginVertical: 10,
     },
     text: {
+        fontFamily : 'Comfortaa-Regular',
         width:'80%',
         fontWeight: '400',
         fontSize: 12,
         textAlign:'left',
     },
+    agree_text:{ fontWeight: '700', marginLeft:4, fontFamily :'Comfortaa-Bold' },
+
 })

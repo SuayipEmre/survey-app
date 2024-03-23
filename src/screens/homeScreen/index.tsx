@@ -6,7 +6,9 @@ const HomeScreen = () => {
   return (
     <View style={{backgroundColor:'#fff',
      flex:1,}}>
-      <Text>HomeScreen</Text>
+      <Text style={{
+        fontFamily :'Comfortaa-Bold'
+      }}>HomeScreen</Text>
       <TabBarSurveyIcon color={'#000'}  size={23}/>
     </View>
   )

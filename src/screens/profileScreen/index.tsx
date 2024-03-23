@@ -38,7 +38,7 @@ const ProfileScreen = () => {
 
 
           <ProfileSectionItem title='Nickname' subText='Text' />
-          <ProfileSectionItem title='E-mail' subText={userSession?.username} />
+          <ProfileSectionItem title='E-mail' subText={userSession?.username ?? "test@test.com"} />
           <ProfileSectionItem title={t('birthday')} subText='01.01.1111' />
           <ProfileSectionItem title={t('gender')} subText='Lorem ipsum' />
 
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   profile_text: {
+    fontFamily :'Comfortaa-Bold',
     color: '#0300A3',
     lineHeight: 15.61,
     fontWeight: '700'
@@ -91,6 +92,7 @@ const styles = StyleSheet.create({
   body_content_item: {
   },
   section_title: {
+    fontFamily :'Comfortaa-Regular',
     fontWeight: '400',
     fontSize: 12,
     lineHeight: 13.38,

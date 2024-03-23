@@ -48,6 +48,7 @@ export default SignUpScreen
 
 const styles = StyleSheet.create({
   select_gender_title : {
+    fontFamily :'Comfortaa-SemiBold',
     marginVertical : 15,
   },
   gender_item_container:{

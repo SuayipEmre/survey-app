@@ -30,7 +30,7 @@ const PDPLScreen = () => {
                     alignItems: 'center',
                 }}>
                     <Text style={[{color : color.primary},styles.title]}>{t('sensitiveDataMessage')}</Text>
-                    <Text style={{ fontSize: 12, fontWeight: '400', textAlign: 'center' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's</Text>
+                    <Text style={{ fontSize: 12, fontWeight: '400', textAlign: 'center',  fontFamily :'Comfortaa-Bold' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's</Text>
 
 
                     <DataPolicyAgreementSwitchItem isRequiredField text={firstSwitchText} />
@@ -50,6 +50,7 @@ export default PDPLScreen
 
 const styles = StyleSheet.create({
     title: {
+        fontFamily :'Comfortaa-Bold',
         fontWeight: '700',
         fontSize: 14,
         marginVertical: 7,

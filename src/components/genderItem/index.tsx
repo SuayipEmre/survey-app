@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     genre_text: {
+        fontFamily :'Comfortaa-SemiBold',
         fontSize: 12,
         fontWeight: '600'
     }

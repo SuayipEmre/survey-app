@@ -83,6 +83,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   title : {
+    fontFamily :'Comfortaa-Bold',
     fontWeight :'700',
     lineHeight : 22.3,
     fontSize :20,
