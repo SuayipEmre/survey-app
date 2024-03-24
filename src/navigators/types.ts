@@ -3,7 +3,8 @@
 
 export type MainNavigatorStackParamList = {
    LandingScreen: undefined,
-   LikertQuestionScreen : undefined
+   LikertQuestionScreen : {surveyCategory : string},
+   SurveyCategoryScreen :  undefined,
 }
 
 

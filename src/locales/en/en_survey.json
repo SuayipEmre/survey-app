@@ -40,5 +40,49 @@
       "question": "How important is sportsmanship in sports?",
       "options": ["Very Important", "Important", "Not Important"]
     }
+  ],
+  "art": [
+    {
+      "question": "Are you interested in art?",
+      "options": ["Yes", "No"]
+    },
+    {
+      "question": "What is your favorite art form?",
+      "options": ["Painting", "Sculpture", "Music", "Theatre", "Dance", "Other"]
+    },
+    {
+      "question": "Which artist do you admire the most?",
+      "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Michelangelo", "Frida Kahlo", "Other"]
+    },
+    {
+      "question": "Which art movement do you prefer?",
+      "options": ["Renaissance", "Baroque", "Rococo", "Romanticism", "Impressionism", "Surrealism", "Modernism", "Postmodernism"]
+    },
+    {
+      "question": "How do you evaluate works of art?",
+      "options": ["Aesthetically", "In terms of meaning", "In terms of historical and cultural significance", "In terms of creativity", "Other"]
+    },
+    {
+      "question": "Which art event did you last attend?",
+      "options": ["Music concert", "Art exhibition", "Theatre play", "Dance performance", "Sculpture exhibition", "Other"]
+    },
+    {
+      "question": "What is the importance of art in your life?",
+      "options": ["Very significant", "Significant", "Moderate", "Little", "None"]
+    },
+    {
+      "question": "Do you create your own artworks?",
+      "options": ["Yes", "No"]
+    },
+    {
+      "question": "Which color palette do you prefer?",
+      "options": ["Pastel tones", "Vibrant colors", "Neutral tones", "Mixed colors"]
+    },
+    {
+      "question": "What do you think about the impact of art on society?",
+      "options": ["Very positive", "Positive", "Neutral", "Negative", "Very negative"]
+    }
   ]
+
 }
+

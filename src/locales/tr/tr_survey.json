@@ -40,5 +40,47 @@
       "question": "Sporculukta fair-play (centilmenlik) sizin için ne kadar önemlidir?",
       "options": ["Çok Önemli", "Önemli", "Önemsiz"]
     }
+  ],
+  "art": [
+    {
+      "question": "Sanatla ilgileniyor musunuz?",
+      "options": ["Evet", "Hayır"]
+    },
+    {
+      "question": "En sevdiğiniz sanat dalı nedir?",
+      "options": ["Resim", "Heykel", "Müzik", "Tiyatro", "Dans", "Diğer"]
+    },
+    {
+      "question": "Hangi sanatçıyı daha çok takdir edersiniz?",
+      "options": ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Michelangelo", "Frida Kahlo", "Diğer"]
+    },
+    {
+      "question": "Hangi sanat akımını daha çok beğenirsiniz?",
+      "options": ["Rönesans", "Barok", "Rokoko", "Romantizm", "İzlenimcilik", "Sürrealizm", "Modernizm", "Postmodernizm"]
+    },
+    {
+      "question": "Sanat eserlerini nasıl değerlendirirsiniz?",
+      "options": ["Estetik açıdan", "Anlam açısından", "Tarihi ve kültürel açıdan", "Yaratıcılık açısından", "Diğer"]
+    },
+    {
+      "question": "En son hangi sanat etkinliğine katıldınız?",
+      "options": ["Müzik konseri", "Resim sergisi", "Tiyatro oyunu", "Dans gösterisi", "Heykel sergisi", "Diğer"]
+    },
+    {
+      "question": "Sanatın sizin yaşamınızdaki önemi nedir?",
+      "options": ["Çok büyük", "Önemli", "Orta derecede", "Az", "Hiç"]
+    },
+    {
+      "question": "Kendi sanat eserlerinizi oluşturur musunuz?",
+      "options": ["Evet", "Hayır"]
+    },
+    {
+      "question": "Hangi renk paletini daha çok tercih edersiniz?",
+      "options": ["Pastel tonlar", "Canlı renkler", "Nötr tonlar", "Karışık renkler"]
+    },
+    {
+      "question": "Sanatın toplum üzerindeki etkisi hakkında ne düşünüyorsunuz?",
+      "options": ["Çok olumlu", "Olumlu", "Nötr", "Olumsuz", "Çok olumsuz"]
+    }
   ]
 }

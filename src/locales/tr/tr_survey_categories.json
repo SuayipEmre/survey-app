@@ -1,0 +1,17 @@
+{
+    "categories" : [
+        {
+            "id": "1",
+            "categoryName" :"Spor",
+            "categoryCode" :"sport"
+        },
+    
+        {
+            "id": "2",
+            "categoryName" :"Sanat",
+            "categoryCode" :"art"
+        }
+    
+       
+    ]
+}

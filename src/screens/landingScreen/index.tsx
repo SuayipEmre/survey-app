@@ -29,7 +29,7 @@ const LandingScreen = () => {
         <Text style={[styles.hello_text, styles.username_text]}>{user?.username}</Text>
        </View>
 
-       <Button onPress={() => navigation.navigate('LikertQuestionScreen')} text={t('startSurvey')} />
+       <Button onPress={() => navigation.navigate('SurveyCategoryScreen')} text={t('startSurvey')} />
        
       </View>
     </>

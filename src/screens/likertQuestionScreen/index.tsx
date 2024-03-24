@@ -5,14 +5,20 @@ import SurveyQuestions from '../../components/surveyQuestions'
 import { useTranslation } from 'react-i18next'
 import { QuestionDataTypes } from '../../types/questionDataTypes'
 import SurveyQuestionActions from '../../components/likertQuestionContent/actionButtons'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { MainNavigatorStackParamList } from '../../navigators/types'
 
-const LikertQuestionScreen = () => {
+type LikertQuestionScreenPropsTypes = NativeStackScreenProps<MainNavigatorStackParamList, 'LikertQuestionScreen'>
+
+const LikertQuestionScreen : React.FC<LikertQuestionScreenPropsTypes> = ({route}) => {
+  console.log(route.params.surveyCategory);
+  
   const [remainingTime, setRemainingTime] = useState(1800)// 30 min
   const [step, setStep] = useState(0)
   const [score, setScore] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
   const { t } = useTranslation(['translation', 'survey'])
-  const questions: QuestionDataTypes[] = t('sport', { ns: 'survey', returnObjects: true })
+  const questions: QuestionDataTypes[] = t(route.params.surveyCategory, { ns: 'survey', returnObjects: true })
 
   useEffect(() => {
 

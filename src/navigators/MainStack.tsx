@@ -6,6 +6,7 @@ import { useLayoutEffect } from 'react';
 import { getFocusedRouteNameFromRoute, useNavigation, useRoute } from '@react-navigation/native';
 import { useThemeColor } from '../store/features/theme/hooks';
 import { Dimensions } from 'react-native';
+import SurveyCategoryScreen from '../screens/surveyCategoryScreen';
 
 const Stack = createNativeStackNavigator<MainNavigatorStackParamList>()
 
@@ -59,6 +60,15 @@ export const MainStack: React.FC = () => {
           
         }}
       />
+       <Stack.Screen
+        name='SurveyCategoryScreen'
+        component={SurveyCategoryScreen}
+        options={{
+          headerShown: false,
+          
+        }}
+      />
+
 
     </Stack.Navigator>
   )
