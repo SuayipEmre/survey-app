@@ -25,5 +25,7 @@
     "activeLanguage" : "Aktif Dil",
     "hello" : "Merhaba",
     "startSurvey" : "Ankete Başla",
-    "logout" : "Çıkış Yap"
+    "logout" : "Çıkış Yap",
+    "surveyTopicTitle":  "Anket Konu Başlığı",
+    "nextQuestion" : "Sonraki Soru"
 }

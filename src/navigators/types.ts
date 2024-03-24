@@ -2,7 +2,8 @@
 
 
 export type MainNavigatorStackParamList = {
-   LandingScreen: undefined
+   LandingScreen: undefined,
+   LikertQuestionScreen : undefined
 }
 
 

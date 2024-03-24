@@ -1,13 +1,11 @@
 import React from 'react';
 import Svg, { Path } from 'react-native-svg'
+import { IconsPropsType } from './types';
 
 
-type TabBarSurveyIconPropsType = {
-    color: string,
-    size: number
-}
 
-export const TabBarSurveyIcon: React.FC<TabBarSurveyIconPropsType> = ({ color, size = 23 }) => {
+
+export const TabBarSurveyIcon: React.FC<IconsPropsType> = ({ color, size = 23 }) => {
     return (
         <Svg
             width={size}

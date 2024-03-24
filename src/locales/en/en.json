@@ -25,5 +25,7 @@
     "activeLanguage" : "Active Language",
     "hello" : "Hello",
     "startSurvey" : "Start Survey",
-    "logout" : "Logout"
+    "logout" : "Logout",
+    "surveyTopicTitle":  "Survey Topic Title",
+    "nextQuestion" : "Next question"
 }

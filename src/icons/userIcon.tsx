@@ -1,15 +1,12 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+
 import Svg, { Path } from 'react-native-svg';
+import { IconsPropsType } from './types';
 
 
-type ProfileIconPropsType = {
-    color: string,
-    size: number
-}
 
 
-export const ProfileIcon : React.FC<ProfileIconPropsType> = ({ color, size }) => {
+export const ProfileIcon : React.FC<IconsPropsType> = ({ color, size }) => {
   return (
       <Svg width={size} height={size} viewBox="0 0 13 13" fill="none">
         <Path

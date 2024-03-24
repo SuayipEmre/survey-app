@@ -5,11 +5,16 @@ import { useUserSession } from '../../store/features/auth/hooks'
 import { useTranslation } from 'react-i18next'
 import Button from '../../components/button'
 import { useThemeColor } from '../../store/features/theme/hooks'
+import { NavigationProp, useNavigation } from '@react-navigation/native'
+import { MainNavigatorStackParamList } from '../../navigators/types'
 
 const LandingScreen = () => {
   const user = useUserSession()
-  const { t } = useTranslation()
   const color = useThemeColor()
+  const navigation = useNavigation<NavigationProp<MainNavigatorStackParamList>>()
+  const { t } = useTranslation()
+
+  
   
   return (
     <>
@@ -24,7 +29,7 @@ const LandingScreen = () => {
         <Text style={[styles.hello_text, styles.username_text]}>{user?.username}</Text>
        </View>
 
-       <Button onPress={() => {}} text={t('startSurvey')} />
+       <Button onPress={() => navigation.navigate('LikertQuestionScreen')} text={t('startSurvey')} />
        
       </View>
     </>

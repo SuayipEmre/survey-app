@@ -1,0 +1,104 @@
+{
+  "sport": [
+    {
+      "question": "Hangi spor dalında 'Grand Slam' turnuvaları düzenlenir?",
+      "options": [
+        "Futbol",
+        "Tenis",
+        "Basketbol",
+        "Golf"
+      ],
+      "answer": "Tenis"
+    },
+    {
+      "question": "Hangi spor dalında 'Super Bowl' adı verilen final maçı düzenlenir?",
+      "options": [
+        "Amerikan Futbolu",
+        "Rugby",
+        "Beyzbol",
+        "Futbol"
+      ],
+      "answer": "Amerikan Futbolu"
+    },
+    {
+      "question": "Hangi spor dalında 'Tour de France' düzenlenir?",
+      "options": [
+        "Koşu",
+        "Bisiklet",
+        "Yüzme",
+        "Kayak"
+      ],
+      "answer": "Bisiklet"
+    },
+    {
+      "question": "Hangi spor dalında 'Wimbledon' turnuvası düzenlenir?",
+      "options": [
+        "Golf",
+        "Tenis",
+        "Bilardo",
+        "Voleybol"
+      ],
+      "answer": "Tenis"
+    },
+    {
+      "question": "Hangi spor dalında 'Ryder Cup' düzenlenir?",
+      "options": [
+        "Golf",
+        "Futbol",
+        "Beyzbol",
+        "Tenis"
+      ],
+      "answer": "Golf"
+    },
+    {
+      "question": "Hangi spor dalında 'Olympic Games' (Olimpiyat Oyunları) düzenlenir?",
+      "options": [
+        "Buz Hokeyi",
+        "Yüzme",
+        "Atletizm",
+        "Jimnastik"
+      ],
+      "answer": "Atletizm"
+    },
+    {
+      "question": "Hangi spor dalında 'Super Bowl' adı verilen final maçı düzenlenir?",
+      "options": [
+        "Amerikan Futbolu",
+        "Rugby",
+        "Beyzbol",
+        "Futbol"
+      ],
+      "answer": "Amerikan Futbolu"
+    },
+    {
+      "question": "Hangi spor dalında 'Tour de France' düzenlenir?",
+      "options": [
+        "Koşu",
+        "Bisiklet",
+        "Yüzme",
+        "Kayak"
+      ],
+      "answer": "Bisiklet"
+    },
+    {
+      "question": "Hangi spor dalında 'Wimbledon' turnuvası düzenlenir?",
+      "options": [
+        "Golf",
+        "Tenis",
+        "Bilardo",
+        "Voleybol"
+      ],
+      "answer": "Tenis"
+    },
+    {
+      "question": "Hangi spor dalında 'Ryder Cup' düzenlenir?",
+      "options": [
+        "Golf",
+        "Futbol",
+        "Beyzbol",
+        "Tenis"
+      ],
+      "answer": "Golf"
+    }
+  ]
+}

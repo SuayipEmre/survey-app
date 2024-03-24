@@ -1,14 +1,12 @@
 import React from 'react'
 import Svg, { Path } from 'react-native-svg';
+import { IconsPropsType } from './types';
 
 
 
-type EditIconPropsType = {
-    color: string,
-    size: number
-}
 
-export const EditIcon: React.FC<EditIconPropsType> = ({ color, size }) => {
+
+export const EditIcon: React.FC<IconsPropsType> = ({ color, size }) => {
     return (
         <Svg width={size} height={size} viewBox="0 0 19 19" fill="none">
           <Path
