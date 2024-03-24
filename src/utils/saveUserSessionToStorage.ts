@@ -8,7 +8,7 @@ import { UserSessionType } from '../types/userSessionType';
  */
 export const saveUserSessionToStorage = async(userData : UserSessionType) => {
     try {
-      // Save user session data to AsyncStorage
+      // Save user session data to storage
         await AsyncStorage.setItem('userSession', JSON.stringify(userData))
       } catch (error) {
         console.log("Oturum kaydedilirken bir hata oluştu: ", error);

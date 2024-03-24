@@ -7,6 +7,7 @@ import { Colors } from '../../style/colors'
 import ProfileSectionItem from '../../components/profileSectionItem'
 import { useUserSession } from '../../store/features/auth/hooks'
 import { removeUserSession } from '../../utils/removeUserSessionFromStorage'
+import { saveUserLanguagePreference } from '../../utils/saveLanguagePreferenceToStorage'
 
 const ProfileScreen = () => {
   const [lang, setLang] = useState('en')
@@ -19,18 +20,18 @@ const ProfileScreen = () => {
   const setLanguage = async () => {
     setLang(prev => prev == 'en' ? 'tr' : 'en')
     await i18n.changeLanguage(lang)
+    await saveUserLanguagePreference(lang)
   }
 
-  const handleLogout = async() => {
+  const handleLogout = async () => {
     await removeUserSession()
   }
 
   return (
-    <SafeAreaView style={{
-    }}>
+    <SafeAreaView>
       <ScrollView contentContainerStyle={{
-        alignItems:'center',
-}}>
+        alignItems: 'center',
+      }}>
         <View style={styles.container}>
 
           <View style={styles.header}>
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   profile_text: {
-    fontFamily :'Comfortaa-Bold',
+    fontFamily: 'Comfortaa-Bold',
     color: '#0300A3',
     lineHeight: 15.61,
     fontWeight: '700'
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   body_content_item: {
   },
   section_title: {
-    fontFamily :'Comfortaa-Regular',
+    fontFamily: 'Comfortaa-Regular',
     fontWeight: '400',
     fontSize: 12,
     lineHeight: 13.38,
