@@ -8,16 +8,19 @@ type SurveyQuestionActionsPropsType = {
   setSelectedAnswer: (answer: string) => void,
   setStep: (step: number) => void,
   step: number,
+  remainingtime : number,
 }
 
 
-const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({step, setStep, setSelectedAnswer}) => {
+const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({step, setStep, setSelectedAnswer, remainingtime}) => {
 
 
   const{t} = useTranslation()
   const handleIncreaseStep = () => {
     if(step < 9){
       setStep(step + 1)
+      console.log(1800 - remainingtime)
+      
       setSelectedAnswer('')
     }
   }

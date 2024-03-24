@@ -1,0 +1,44 @@
+{
+  "sport":  [
+    {
+      "question": "How often do you exercise per week?",
+      "options": ["Never", "1-2 times", "3-4 times", "5 or more times"]
+    },
+    {
+      "question": "Which sport do you enjoy playing the most?",
+      "options": ["Football", "Basketball", "Tennis", "Swimming", "Running", "Other"]
+    },
+    {
+      "question": "What is your favorite sports team?",
+      "options": ["Manchester United", "Los Angeles Lakers", "Real Madrid", "New England Patriots", "Other"]
+    },
+    {
+      "question": "Which sport do you prefer watching on TV?",
+      "options": ["Football", "Basketball", "Tennis", "Golf", "Cricket", "Other"]
+    },
+    {
+      "question": "How many hours do you spend on sports activities per week?",
+      "options": ["Less than 1 hour", "1-3 hours", "3-5 hours", "More than 5 hours"]
+    },
+    {
+      "question": "What is your favorite Olympic sport?",
+      "options": ["Swimming", "Athletics", "Gymnastics", "Cycling", "Diving", "Other"]
+    },
+    {
+      "question": "Do you prefer individual or team sports?",
+      "options": ["Individual", "Team", "Both Equally"]
+    },
+    {
+      "question": "What sports equipment do you own?",
+      "options": ["Football", "Basketball", "Tennis Racket", "Swimming Goggles", "Running Shoes", "Other"]
+    },
+    {
+      "question": "Which sport do you find most challenging?",
+      "options": ["Rock Climbing", "Surfing", "Skiing", "Snowboarding", "Boxing", "Other"]
+    },
+    {
+      "question": "How important is sportsmanship in sports?",
+      "options": ["Very Important", "Important", "Not Important"]
+    }
+  ]
+}

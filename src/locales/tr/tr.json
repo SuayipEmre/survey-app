@@ -27,5 +27,11 @@
     "startSurvey" : "Ankete Başla",
     "logout" : "Çıkış Yap",
     "surveyTopicTitle":  "Anket Konu Başlığı",
-    "nextQuestion" : "Sonraki Soru"
-}
+    "nextQuestion" : "Sonraki Soru",
+    "completedSurveys" : "Tamamlanan Anketler",
+    "score": "Puan",
+    "total" : "Toplam",
+    "today" : "Bugün",
+    "list" : "Liste",
+    "survey" :"Anket"
+} 

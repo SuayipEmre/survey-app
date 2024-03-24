@@ -4,18 +4,15 @@ import LikertQuestionHeader from '../../components/likertQuestionContent/likertQ
 import SurveyQuestions from '../../components/surveyQuestions'
 import { useTranslation } from 'react-i18next'
 import { QuestionDataTypes } from '../../types/questionDataTypes'
-import LeftArrowIcon from '../../icons/leftArrow'
-import { useThemeColor } from '../../store/features/theme/hooks'
 import SurveyQuestionActions from '../../components/likertQuestionContent/actionButtons'
 
 const LikertQuestionScreen = () => {
+  const [remainingTime, setRemainingTime] = useState(1800)// 30 min
   const [step, setStep] = useState(0)
-  const color = useThemeColor()
   const [score, setScore] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState('')
-  const { t } = useTranslation(['translation', 'quiz'])
-  const questions: QuestionDataTypes[] = t('sport', { ns: 'quiz', returnObjects: true })
-  const [remainingTime, setRemainingTime] = useState(1800)// 30 min
+  const { t } = useTranslation(['translation', 'survey'])
+  const questions: QuestionDataTypes[] = t('sport', { ns: 'survey', returnObjects: true })
 
   useEffect(() => {
 
@@ -29,6 +26,7 @@ const LikertQuestionScreen = () => {
     }
 
 
+    //clear timer
     return () => clearInterval(interval)
   }, [remainingTime])
 
@@ -46,7 +44,7 @@ const LikertQuestionScreen = () => {
       <LikertQuestionHeader remainingTime={formatTime(remainingTime)} step={step + 1} steps={questions.length} />
       <SurveyQuestions selectedAnswer={selectedAnswer} setSelectedAnswer={setSelectedAnswer} step={step} questions={questions} />
 
-      <SurveyQuestionActions setSelectedAnswer={setSelectedAnswer} setStep={setStep} step={step} />
+      <SurveyQuestionActions setSelectedAnswer={setSelectedAnswer} setStep={setStep} step={step} remainingtime={remainingTime} />
     </View>
   )
 }

@@ -1,19 +1,19 @@
 import i18next from 'i18next'
 import { initReactI18next } from 'react-i18next'
 import en from '../locales/en/en.json'
-import en_quiz from '../locales/en/en_quiz.json'
+import en_survey from '../locales/en/en_survey.json'
 import tr from '../locales/tr/tr.json'
-import tr_quiz from '../locales/tr/tr_quiz.json'
+import tr_survey from '../locales/tr/tr_survey.json'
 
 const languageResources = {
     en: {
         translation: en,
-        quiz: en_quiz,
+        survey: en_survey,
         
     },
     tr: {
         translation: tr,
-        quiz: tr_quiz
+        survey: tr_survey
     }
 }
 i18next

@@ -1,6 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
-import { useTranslation } from 'react-i18next'
 import { QuestionDataTypes } from '../../types/questionDataTypes'
 import { useThemeColor } from '../../store/features/theme/hooks'
 
@@ -12,7 +11,6 @@ type SurveyQuestionsPropsType = {
 }
 
 const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, setSelectedAnswer, step, questions }) => {
-  const { t } = useTranslation(['translation', 'quiz'])
   const color = useThemeColor()
   const questionItem: QuestionDataTypes = questions[step]
 

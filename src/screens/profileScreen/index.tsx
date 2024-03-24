@@ -28,7 +28,7 @@ const ProfileScreen = () => {
   }
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{flex:1, paddingBottom:20,}}>
       <ScrollView contentContainerStyle={{
         alignItems: 'center',
       }}>
