@@ -16,8 +16,6 @@ const initialState: initialStateTypes = {
     initialState,
     reducers: {
         _setUserSeession: (state, action: PayloadAction<UserSessionType | null>) => {
-            console.log('payload : ', action );
-            
             state.userSession = action.payload
         }
     }

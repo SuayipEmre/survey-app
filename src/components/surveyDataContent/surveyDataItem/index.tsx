@@ -7,7 +7,12 @@ import { useThemeColor } from '../../../store/features/theme/hooks'
 import { useTranslation } from 'react-i18next'
 import styles from './styles'
 
-const SurveyDataItem: React.FC = () => {
+
+type SurveyDataItemPropsType = {
+  date? : string,
+  time? : string
+}
+const SurveyDataItem: React.FC <SurveyDataItemPropsType> = ({date, time}) => {
   const { t } = useTranslation()
   const color = useThemeColor()
   return (
@@ -20,9 +25,9 @@ const SurveyDataItem: React.FC = () => {
 
       <View style={styles.information_item_bottom_content}>
         <CalendarIcon size={13} color={color.midblue} />
-        <Text style={[{color : color.primary}, styles.date]}>25.10.2023</Text>
+        <Text style={[{color : color.primary}, styles.date]}>{date}</Text>
         <ClockIcon size={13} color={color.midblue} />
-        <Text style={[{color : color.primary}, styles.time_text]}>14:52</Text>
+        <Text style={[{color : color.primary}, styles.time_text]}>{time}</Text>
 
       </View>
     </View>

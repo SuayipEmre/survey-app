@@ -25,7 +25,7 @@ const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, s
         <>
           <Text style={[{color : color.primary}, styles.question]}>{questionItem.question}</Text>
           {
-            //if questions's length greater than 0, questions will be visble.
+            //if questions's length greater than 0, questions will be visible.
             questions.length > 0 && (
               <View style={styles.question_options_container}>
                 {

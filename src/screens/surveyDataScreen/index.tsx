@@ -1,18 +1,51 @@
 import { Dimensions, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { SafeAreaView } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useThemeColor } from '../../store/features/theme/hooks'
 import ListIcon from '../../icons/listIcon'
 import SurveyDataItem from '../../components/surveyDataContent/surveyDataItem'
 import SurveyDataTopContentItem from '../../components/surveyDataContent/topContentItem'
-
+import { useCompletedSurveys } from '../../store/features/survey/hooks'
+import i18 from '../../Services/i18next'
 
 const SurveyDataScreen = () => {
+  const [todayCount, setTodayCount] = useState(0) 
   const { t } = useTranslation()
   const color = useThemeColor()
+  const completedSurveys = useCompletedSurveys()
+
+
+  useEffect(() => {
+    let count = 0;
+    completedSurveys.forEach((item) => {
+      if (isToday(item.survey.completedDate?.date)) {
+        count++
+      }
+    });
+    setTodayCount(count)
+  }, [completedSurveys])
+
+
+
+  
+
+
+  const isToday = (dates : any) => {
+    const today = new Date();
+    const dateTrArray = dates.date_tr.split(".");
+    const dateEnArray = dates.date_en.split("/");
+
+    const dateTrObject = new Date(dateTrArray[2], dateTrArray[1] - 1, dateTrArray[0]);
+    const dateEnObject = new Date(dateEnArray[2], dateEnArray[0] - 1, dateEnArray[1]);
+
+    return today.toDateString() === dateTrObject.toDateString() && today.toDateString() === dateEnObject.toDateString();
+  }
+
+
+
   return (
-    <SafeAreaView style={{ alignItems: 'center', flex: 1, backgroundColor:color.third }}>
+    <SafeAreaView style={{ alignItems: 'center', flex: 1, backgroundColor: color.third }}>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={[{ color: color.primary }, styles.title]}>{t('completedSurveys')}</Text>
 
@@ -22,11 +55,11 @@ const SurveyDataScreen = () => {
           <SurveyDataTopContentItem value={30} text={t('score')} />
 
           <View style={{ width: 1, height: 50, backgroundColor: color.secondary }} />
-          <SurveyDataTopContentItem value={7} text={t('total')} />
+          <SurveyDataTopContentItem value={completedSurveys.length} text={t('total')} />
 
           <View style={{ width: 1, height: 50, backgroundColor: color.secondary }} />
-          <SurveyDataTopContentItem value={2} text={t('today')} />
-         
+          <SurveyDataTopContentItem value={todayCount} text={t('today')} />
+
 
         </View>
 
@@ -36,11 +69,16 @@ const SurveyDataScreen = () => {
           <Text style={styles.list_text}>{t('list')}</Text>
         </View>
 
+        {
+          completedSurveys.length > 0 && completedSurveys.map((item, idx) => {
 
-        <SurveyDataItem />
-        <SurveyDataItem />
-        <SurveyDataItem />
-        <SurveyDataItem />
+
+
+            return <SurveyDataItem key={idx} time={item.survey.completedDate?.time} date={
+              i18.language == 'tr' ? item.survey.completedDate?.date.date_tr : item.survey.completedDate?.date.date_en
+            } />
+          })
+        }
 
       </ScrollView>
     </SafeAreaView>
@@ -62,7 +100,7 @@ const styles = StyleSheet.create({
     lineHeight: 17.84,
     marginVertical: 40,
   },
- 
+
   content_title_container: {
     width: '90%',
     alignSelf: 'center',
@@ -81,3 +119,6 @@ const styles = StyleSheet.create({
 
 
 })
+
+
+

@@ -1,37 +1,16 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { QuestionDataTypes } from "../../../types/questionDataTypes";
 import { getCurrentDate } from "../../../utils/date/getCurrentDate";
-import { CompletedQuestionsType, QuestionsType } from "./types";
+import { CompleteQuestionPropsType, CompletedQuestionsType, CompletedSurveyType, QuestionsType, initialStatePropsTypes } from "./types";
 
 
 
-/*
-completedSurvey = [
-    {
-        surveyName = "sport",
-        questions = []
-    }
-]
-*/
 
 
-type CompletedSurveyType = {
-    surveyName : string,
-    survey : CompletedQuestionsType
-}
 
-type initialStatePropsTypes = {
-    completedSurvey : CompletedSurveyType,
-    surveyName: string,
-    questions: QuestionDataTypes[],
-    currentStep: number,
-    completedQuestions: CompletedQuestionsType,
-    remainingtime: number,
-    questionResponseTime: number,
-}
 
 const initialState: initialStatePropsTypes = {
-    completedSurvey : {} as CompletedSurveyType,
+    completedSurveys: [],
     surveyName: '',
     questions: [],
     currentStep: 0,
@@ -40,14 +19,7 @@ const initialState: initialStatePropsTypes = {
     questionResponseTime: 0
 }
 
-export type CompleteQuestionPropsType = {
-    isAdd?: boolean
-    isRemove?: boolean,
-    question?: QuestionsType,
-    clearAll?: boolean;
-    isCompletedSurvey?: boolean
 
-}
 
 const surveySlice = createSlice({
     name: 'survey',
@@ -60,7 +32,7 @@ const surveySlice = createSlice({
             state.currentStep = action.payload
         },
 
-        _completeQuestion: (state, action: PayloadAction<CompleteQuestionPropsType>) => {
+        _questionOperations: (state, action: PayloadAction<CompleteQuestionPropsType>) => {
             const payload = action.payload
             /*
             payload == isAdd. add question to completedQuestions
@@ -68,27 +40,27 @@ const surveySlice = createSlice({
             payload == isRemove. remove question from completedQuestions
             */
 
-            if (payload.isCompletedSurvey) {
-                const completedDate = {
-                    date: {
-                        date_en: getCurrentDate().formattedDateEN,
-                        date_tr: getCurrentDate().formattedDateTR,
-                    },
-                    time: getCurrentDate().formattedTime
-                }
-                state.completedQuestions = {
-                    completedDate,
-                    questions: state.completedQuestions.questions
-                }
-            }
 
-            else if (payload?.isAdd) {
+            if (payload?.isAdd) {
                 state.completedQuestions.questions.push(action.payload.question!)
             } else if (payload?.isRemove) {
                 const updatedCompletedQuestions = state.completedQuestions.questions.filter(item => item.question != payload?.question?.question)
                 state.completedQuestions.questions = updatedCompletedQuestions
             } else if (payload?.clearAll) {
                 state.completedQuestions.questions = []
+            } else if (payload.isFinished) {
+                const dateEN = getCurrentDate().formattedDateEN
+                const dateTR = getCurrentDate().formattedDateTR
+                const time = getCurrentDate().formattedTime
+                state.completedQuestions.completedDate = {
+                    date: {
+                        date_en: dateEN,
+                        date_tr: dateTR,
+                    },
+                    time
+                }
+
+
 
             }
 
@@ -100,13 +72,35 @@ const surveySlice = createSlice({
             state.remainingtime = action.payload
         },
 
-        _setSurveyName : (state, action : PayloadAction<string>) => {
-        state.surveyName = action.payload
+        _setSurveyName: (state, action: PayloadAction<string>) => {
+            state.surveyName = action.payload
         },
-        
+
+        _setCompletedSurveys: (state, action: PayloadAction<CompletedSurveyType>) => {
+            state.completedSurveys.push(action.payload)
+        },
+
+        //clear all data for next survey
+        _clearAllQuestionData: (state) => {
+            state.surveyName = ''
+            state.remainingtime = 1800
+            state.questionResponseTime = 0
+            state.currentStep = 0
+        }
+
+
 
     }
 })
 
-export const { _setQuestions, _completeQuestion, _setCurrentStep, _setRemainingTime, _setSurveyName } = surveySlice.actions
+export const {
+    _setQuestions,
+    _questionOperations,
+    _setCurrentStep,
+    _setRemainingTime,
+    _setSurveyName,
+    _setCompletedSurveys,
+    _clearAllQuestionData
+} = surveySlice.actions
 export default surveySlice.reducer
+

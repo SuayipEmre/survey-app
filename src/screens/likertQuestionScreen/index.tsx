@@ -1,4 +1,4 @@
-import { ActivityIndicator,  Text, View } from 'react-native'
+import { ActivityIndicator, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import LikertQuestionHeader from '../../components/likertQuestionContent/likertQuestionHeader'
 import SurveyQuestions from '../../components/surveyQuestions'
@@ -7,11 +7,12 @@ import { QuestionDataTypes } from '../../types/questionDataTypes'
 import SurveyQuestionActions from '../../components/likertQuestionContent/actionButtons'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { MainNavigatorStackParamList } from '../../navigators/types'
-import { setCompleteQuestion, setCurrentStep, setQuestions, setRemainingTime, setSurveyName } from '../../store/features/survey/actions'
-import { useCurrentStep, useQuestions, useRemainingTime } from '../../store/features/survey/hooks'
+import { questionOperations, setCompletedSurveys, setCurrentStep, setQuestions, setRemainingTime, setSurveyName } from '../../store/features/survey/actions'
+import { useCompletedSurveys, useCurrentStep, useQuestions, useRemainingTime } from '../../store/features/survey/hooks'
 import CompletedSurveyContent from '../../components/completedSurveyContent'
 import { formatTime } from '../../utils/date/formatTime'
 import { useThemeColor } from '../../store/features/theme/hooks'
+
 
 type LikertQuestionScreenPropsTypes = NativeStackScreenProps<MainNavigatorStackParamList, 'LikertQuestionScreen'>
 
@@ -25,8 +26,8 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
   const step = useCurrentStep()
   const color = useThemeColor()
 
-  console.log(route.params.surveyCategory);
-  
+
+
   useEffect(() => {
     setIsQuestionsLoading(true)
     setSurveyName(route.params.surveyCategory)
@@ -63,14 +64,15 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
   }, [remainingTime])
 
 
- 
+
+
 
 
 
   const handleNextQuestion = () => {
     if (step < 9) {
       //before change the question, add current question to completed questions.
-      setCompleteQuestion({
+      questionOperations({
         isAdd: true,
         question: {
           ...questions[step],
@@ -78,15 +80,15 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
         }
       })
       setCurrentStep(step + 1)
-
       setSelectedAnswer('')
-    } else if (step == 9) {
-      //complete survey
-      setCompleteQuestion({ isCompletedSurvey: true })
+    
     }
+
+
   }
 
 
+ 
   //if there is no loading or error, return the content; otherwise, return loading or error.
   const renderContent = () => {
     if (isQuestionsLoading) return <ActivityIndicator />
@@ -110,7 +112,7 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
 
 
   return (
-    <View style={{ flex: 1, backgroundColor:color.third }}>
+    <View style={{ flex: 1, backgroundColor: color.third }}>
       {renderContent()}
     </View>
   )

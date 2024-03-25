@@ -30,9 +30,6 @@ const ProfileScreenContainer = () => {
         setLanguage(language == Language.en ? Language.tr : Language.en)
         await i18n.changeLanguage(language)
 
-        console.log('lan ');
-
-
         //save user language preference to async storage
         await saveUserLanguagePreference(language)
     }

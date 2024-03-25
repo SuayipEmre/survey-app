@@ -19,3 +19,29 @@ export type CompletedQuestionsType = {
     completedDate: CompletedDateType | null,
     questions: QuestionsType[]
 }
+
+
+
+export type CompleteQuestionPropsType = {
+    isAdd?: boolean
+    isRemove?: boolean,
+    question?: QuestionsType,
+    clearAll?: boolean;
+    isFinished?: boolean
+}
+
+
+export type CompletedSurveyType = {
+    surveyName: string,
+    survey: CompletedQuestionsType
+}
+
+export type initialStatePropsTypes = {
+    completedSurveys: CompletedSurveyType[],
+    surveyName: string,
+    questions: QuestionDataTypes[],
+    currentStep: number,
+    completedQuestions: CompletedQuestionsType,
+    remainingtime: number,
+    questionResponseTime: number,
+}

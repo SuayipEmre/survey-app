@@ -43,7 +43,6 @@ type BottomNavigatorRootStackParamList = {
 const { width } = Dimensions.get('window')
 
 const RootNavigator: React.FC = () => {
-  const theme = useColorScheme()
   const color = useThemeColor()
 
   const userSession = useUserSession()

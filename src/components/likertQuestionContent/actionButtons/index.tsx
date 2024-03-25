@@ -3,7 +3,7 @@ import React from 'react'
 import LeftArrowIcon from '../../../icons/leftArrow'
 import { useThemeColor } from '../../../store/features/theme/hooks'
 import {  useCurrentStep, useQuestions, useRemainingTime } from '../../../store/features/survey/hooks'
-import { setCompleteQuestion, setCurrentStep } from '../../../store/features/survey/actions'
+import { questionOperations, setCurrentStep } from '../../../store/features/survey/actions'
 import styles from './styles'
 
 
@@ -18,6 +18,7 @@ const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPr
   const remainingTime: number = useRemainingTime()
   const questions = useQuestions()
   const step = useCurrentStep()
+  const color = useThemeColor()
 
  
 
@@ -25,29 +26,26 @@ const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPr
   const handlePreviousQuestion = () => {
     if (step == 0) {
       //clear all data
-      setCompleteQuestion({
+      questionOperations({
         clearAll: true,
       })
+      return
     }
-    if (step > 0) {
-      //remove question on completedQuestions
-      setCompleteQuestion({
-        isAdd: false,
+      
+    //remove question on completedQuestions
+      questionOperations({
         isRemove: true,
-        clearAll: false,
         question: {
           ...questions[step],
           questionResponseTimeInSeconds: 1800 - remainingTime
         }
       })
       setCurrentStep(step - 1)
-    }
   }
 
 
 
 
-  const color = useThemeColor()
   return (
 
     <View style={styles.container}>

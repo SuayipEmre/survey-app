@@ -7,6 +7,7 @@ import Button from '../../components/button'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { MainNavigatorStackParamList } from '../../navigators/types'
 import { useThemeColor } from '../../store/features/theme/hooks'
+import { useCompletedSurveys } from '../../store/features/survey/hooks'
 
 const LandingScreen = () => {
   const user = useUserSession()
@@ -14,7 +15,11 @@ const LandingScreen = () => {
   const { t } = useTranslation()
   const color = useThemeColor()
 
+  const completedSurveys = useCompletedSurveys()
 
+  console.log('completedSurveys', completedSurveys[0]?.survey.completedDate);
+  
+    
   return (
     <>
       <BackgroundImage />
