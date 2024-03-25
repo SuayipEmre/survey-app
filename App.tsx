@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './src/store/app/store';
 import { useColorScheme } from 'react-native';
 import { setThemeColor } from './src/store/features/theme/actions';
-import { getLanguagePreference } from './src/utils/asyncStorage/getLanguagePreferenceFromStorage';
+import { getLanguagePreference } from './src/utils/asyncStorage/language/getLanguagePreferenceFromStorage';
 import i18 from './src/Services/i18next'
 
 

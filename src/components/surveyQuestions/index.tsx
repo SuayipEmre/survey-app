@@ -2,23 +2,24 @@ import { Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { QuestionDataTypes } from '../../types/questionDataTypes'
 import { useThemeColor } from '../../store/features/theme/hooks'
-import { useCurrentStep, useQuestions } from '../../store/features/survey/hooks'
+import { useCurrentStep, useQuestions, useSelectedAnswer } from '../../store/features/survey/hooks'
 import styles from './styles'
 import { useTranslation } from 'react-i18next'
+import { setSelectedAnswer } from '../../store/features/survey/actions'
 
-type SurveyQuestionsPropsType = {
-  selectedAnswer: string,
-  setSelectedAnswer: (answer: string) => void,
-}
 
-const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, setSelectedAnswer }) => {
+
+const SurveyQuestions: React.FC = () => {
   const color = useThemeColor()
   const questions = useQuestions()
   const step = useCurrentStep()
   const{t} = useTranslation()
   const questionItem: QuestionDataTypes = questions[step]
+  const selectedAnswer = useSelectedAnswer()
+  console.log('active step : ' ,step)
+  
 
-
+  
   return (
     <View style={styles.container}>
       {questionItem ? (
@@ -59,4 +60,5 @@ const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, s
 }
 
 export default SurveyQuestions
+
 

@@ -23,6 +23,7 @@ const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPr
  
 
 
+  //return previous survey question
   const handlePreviousQuestion = () => {
     if (step == 0) {
       //clear all data

@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useThemeColor } from '../../store/features/theme/hooks'
 import { useCompletedQuestions, useSurveyName } from '../../store/features/survey/hooks'
 import { clearAllQuestionData, questionOperations, setCompletedSurveys } from '../../store/features/survey/actions'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const CompletedSurveyContent = () => {
 
@@ -25,11 +26,27 @@ const CompletedSurveyContent = () => {
         return () => {
             //clear all data of  previous survey
             clearAllQuestionData()
+            removeUnfinishedSurveyFromStorage()
         }
     }, [])
 
 
 
+
+
+    const removeUnfinishedSurveyFromStorage = async () => {
+
+        try {
+            try {
+                await AsyncStorage.removeItem(`unfinished/${surveyName}`);
+                console.log('Unfinished survey successfully removed from AsyncStorage.');
+            } catch (error) {
+                console.log("AsyncStorage'den veri silinirken bir hata oluştu: ", error);
+            }
+        } catch (error) {
+
+        }
+    }
 
 
 

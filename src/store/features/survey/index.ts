@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { QuestionDataTypes } from "../../../types/questionDataTypes";
 import { getCurrentDate } from "../../../utils/date/getCurrentDate";
-import { CompleteQuestionPropsType, CompletedQuestionsType, CompletedSurveyType, QuestionsType, initialStatePropsTypes } from "./types";
+import { CompleteQuestionPropsType, CompletedSurveyType, initialStatePropsTypes } from "./types";
 
 
 
@@ -16,7 +16,8 @@ const initialState: initialStatePropsTypes = {
     currentStep: 0,
     completedQuestions: { completedDate: null, questions: [] },
     remainingtime: 1800,
-    questionResponseTime: 0
+    questionResponseTime: 0,
+    selectedAnswer : ''
 }
 
 
@@ -79,13 +80,18 @@ const surveySlice = createSlice({
         _setCompletedSurveys: (state, action: PayloadAction<CompletedSurveyType>) => {
             state.completedSurveys.push(action.payload)
         },
-
+        _setSelectedAnswer : (state, action : PayloadAction<string>) => {
+          state.selectedAnswer = action.payload
+        },
         //clear all data for next survey
         _clearAllQuestionData: (state) => {
             state.surveyName = ''
             state.remainingtime = 1800
             state.questionResponseTime = 0
             state.currentStep = 0
+            console.log('cleaned question data' , state.currentStep)
+            
+            
         }
 
 
@@ -100,7 +106,8 @@ export const {
     _setRemainingTime,
     _setSurveyName,
     _setCompletedSurveys,
-    _clearAllQuestionData
+    _clearAllQuestionData,
+    _setSelectedAnswer
 } = surveySlice.actions
 export default surveySlice.reducer
 

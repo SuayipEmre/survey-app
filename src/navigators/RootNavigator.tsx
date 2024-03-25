@@ -20,7 +20,7 @@ import Entypo from 'react-native-vector-icons/Entypo';
 import SurveyDataScreen from '../screens/surveyDataScreen';
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import { useUserSession } from '../store/features/auth/hooks';
-import { getUserSession } from '../utils/asyncStorage/getUserSession';
+import { getUserSession } from '../utils/asyncStorage/userSession/getUserSession';
 import { setUserSession } from '../store/features/auth/actions';
 import { TabBarSurveyIcon } from '../icons/tabBarSurveyIcon';
 import { useThemeColor } from '../store/features/theme/hooks';

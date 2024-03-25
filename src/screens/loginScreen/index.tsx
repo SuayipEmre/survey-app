@@ -6,7 +6,7 @@ import BackgroundImage from '../../components/backgroundImage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthenticationNavigatorStackParamList } from '../../navigators/types';
 import { useSendLoginRequestMutation } from '../../Services/LoginService';
-import { saveUserSessionToStorage } from '../../utils/asyncStorage/saveUserSessionToStorage';
+import { saveUserSessionToStorage } from '../../utils/asyncStorage/userSession/saveUserSessionToStorage';
 import { setUserSession } from '../../store/features/auth/actions';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, useColorScheme } from 'react-native';

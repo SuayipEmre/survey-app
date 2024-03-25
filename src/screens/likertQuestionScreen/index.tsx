@@ -7,11 +7,12 @@ import { QuestionDataTypes } from '../../types/questionDataTypes'
 import SurveyQuestionActions from '../../components/likertQuestionContent/actionButtons'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { MainNavigatorStackParamList } from '../../navigators/types'
-import { questionOperations, setCompletedSurveys, setCurrentStep, setQuestions, setRemainingTime, setSurveyName } from '../../store/features/survey/actions'
-import { useCompletedSurveys, useCurrentStep, useQuestions, useRemainingTime } from '../../store/features/survey/hooks'
+import { questionOperations, setCurrentStep, setQuestions, setRemainingTime, setSelectedAnswer, setSurveyName } from '../../store/features/survey/actions'
+import { useCurrentStep, useQuestions, useRemainingTime, useSelectedAnswer } from '../../store/features/survey/hooks'
 import CompletedSurveyContent from '../../components/completedSurveyContent'
-import { formatTime } from '../../utils/date/formatTime'
 import { useThemeColor } from '../../store/features/theme/hooks'
+import { getIsUnfinishedSurvey } from '../../utils/asyncStorage/survey/getIsUnfisinshedSurvey'
+import { saveunfinishedSurveyToStorage } from '../../utils/asyncStorage/survey/saveUnfinishedSurveyToStorage'
 
 
 type LikertQuestionScreenPropsTypes = NativeStackScreenProps<MainNavigatorStackParamList, 'LikertQuestionScreen'>
@@ -19,18 +20,17 @@ type LikertQuestionScreenPropsTypes = NativeStackScreenProps<MainNavigatorStackP
 const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route }) => {
   const [isQuestionsLoading, setIsQuestionsLoading] = useState(false)
   const [isQuestionsError, setIsQuestionsError] = useState(false)
-  const [selectedAnswer, setSelectedAnswer] = useState('')
   const { t } = useTranslation(['translation', 'survey'])
   const remainingTime: number = useRemainingTime()
   const questions = useQuestions()
   const step = useCurrentStep()
   const color = useThemeColor()
-
-
+  const selectedAnswer = useSelectedAnswer()
 
   useEffect(() => {
     setIsQuestionsLoading(true)
     setSurveyName(route.params.surveyCategory)
+
 
     const getAndSetQuestions = async () => {
       //get question by category and language from i18next.
@@ -45,27 +45,29 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
     }
 
     getAndSetQuestions()
+
   }, [])
 
+  const asyncGetUnfinishedSurvey = async () => {
+    await getIsUnfinishedSurvey(route.params.surveyCategory)
+  }
 
+  /*
+       If the step is between 0 and 9, it means that the user has not finished the survey.
+        The survey is saved in the storage as an unfinished survey.
+       */
+  const asyncSetUnfinishedSurvey = async () => {
+    await saveunfinishedSurveyToStorage(step, route.params.surveyCategory)
+  }
   useEffect(() => {
+    asyncGetUnfinishedSurvey()
 
-    let interval: NodeJS.Timeout
+    return () => {
+      if (step > 0 && step < 9)  asyncSetUnfinishedSurvey()
 
-    if (remainingTime > 0) {
-      // start timer
-      interval = setInterval(() => {
-        setRemainingTime(remainingTime - 1)
-      }, 1000)
     }
 
-    //clear timer
-    return () => clearInterval(interval)
-  }, [remainingTime])
-
-
-
-
+  }, [])
 
 
 
@@ -76,19 +78,20 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
         isAdd: true,
         question: {
           ...questions[step],
-          questionResponseTimeInSeconds: 1800 - remainingTime
+          questionResponseTimeInSeconds: 1800 - remainingTime,
+          selectedAnswer: selectedAnswer,
         }
       })
       setCurrentStep(step + 1)
       setSelectedAnswer('')
-    
     }
 
 
   }
 
 
- 
+
+
   //if there is no loading or error, return the content; otherwise, return loading or error.
   const renderContent = () => {
     if (isQuestionsLoading) return <ActivityIndicator />
@@ -96,11 +99,11 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
 
 
     return <>
-      <LikertQuestionHeader remainingTime={formatTime(remainingTime)} />
+      <LikertQuestionHeader />
       {
         step == 9 ? <CompletedSurveyContent /> : (
           <>
-            <SurveyQuestions selectedAnswer={selectedAnswer} setSelectedAnswer={setSelectedAnswer} />
+            <SurveyQuestions />
 
             <SurveyQuestionActions onPress={handleNextQuestion} buttonText={t('nextQuestion')} />
           </>

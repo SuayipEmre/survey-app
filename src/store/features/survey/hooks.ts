@@ -7,3 +7,4 @@ export const useCompletedQuestions = () => useSelector((state : RootState) => st
 export const useRemainingTime = () => useSelector((state : RootState) => state.survey.remainingtime)
 export const useCompletedSurveys = () => useSelector((state : RootState) => state.survey.completedSurveys)
 export const useSurveyName = () => useSelector((state : RootState) => state.survey.surveyName)
+export const useSelectedAnswer = () => useSelector((state : RootState) => state.survey.selectedAnswer)

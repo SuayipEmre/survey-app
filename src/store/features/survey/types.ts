@@ -1,6 +1,9 @@
 import { QuestionDataTypes } from "../../../types/questionDataTypes"
 
-export type QuestionsType = { questionResponseTimeInSeconds: number } & QuestionDataTypes
+export type QuestionsType = {
+    questionResponseTimeInSeconds?: number,
+    selectedAnswer?:  string
+} & QuestionDataTypes
 
 
 export type completedDateItemType = {
@@ -33,7 +36,7 @@ export type CompleteQuestionPropsType = {
 
 export type CompletedSurveyType = {
     surveyName: string,
-    survey: CompletedQuestionsType
+    survey: CompletedQuestionsType,
 }
 
 export type initialStatePropsTypes = {
@@ -44,4 +47,5 @@ export type initialStatePropsTypes = {
     completedQuestions: CompletedQuestionsType,
     remainingtime: number,
     questionResponseTime: number,
+    selectedAnswer: string
 }
