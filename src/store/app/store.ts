@@ -2,7 +2,8 @@ import { configureStore } from '@reduxjs/toolkit'
 import LoginService from '../../Services/LoginService'
 import authSlice from '../features/auth'
 import themeSlice from '../features/theme'
-import surveySlice from '../survey'
+import surveySlice from '../features/survey'
+import languageSlice from '../features/language'
 
 
 const store = configureStore({
@@ -10,7 +11,8 @@ const store = configureStore({
     reducer: {
         authSlice: authSlice,
         themeSlice: themeSlice,
-        survey : surveySlice,
+        languageSlice: languageSlice,
+        survey: surveySlice,
         [LoginService.reducerPath]: LoginService.reducer
     },
 
@@ -18,7 +20,6 @@ const store = configureStore({
         return (
             getDefaultMiddleware()
                 .concat(LoginService.middleware)
-
         )
     }
 

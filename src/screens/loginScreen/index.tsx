@@ -5,13 +5,13 @@ import AccountActions from '../../components/authAccountActions';
 import BackgroundImage from '../../components/backgroundImage';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthenticationNavigatorStackParamList } from '../../navigators/types';
-import AuthScreensContentContainer from '../../containers/AuthScreensContainer';
 import { useSendLoginRequestMutation } from '../../Services/LoginService';
 import { saveUserSessionToStorage } from '../../utils/asyncStorage/saveUserSessionToStorage';
 import { setUserSession } from '../../store/features/auth/actions';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, useColorScheme } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import AuthScreensLayout from '../../layouts/authScreensLayout';
 
 
 type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>
@@ -27,7 +27,7 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   const [sendLoginRequest, { isError, isLoading, data }] = useSendLoginRequestMutation()
 
   const handleLoginRequest = async () => {
-    const credentials  = {
+    const credentials = {
       username: username,
       password: password
     }
@@ -50,8 +50,8 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
       <BackgroundImage />
 
 
-      <AuthScreensContentContainer>
-      <Text style={[{color : color.primary}, styles.title]}>{t('welcome')}</Text>
+      <AuthScreensLayout>
+        <Text style={[{ color: color.primary }, styles.title]}>{t('welcome')}</Text>
         <AuthenticationFormInput
           labelText='Nickname'
           subText={t('privacyMessage')}
@@ -71,7 +71,7 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
         <Button text={t('login')} onPress={handleLoginRequest} />
 
         <AccountActions text={t('notMember')} buttonText={t('createAccount')} onPress={() => navigation.navigate('SignupScreen')} />
-      </AuthScreensContentContainer>
+      </AuthScreensLayout>
     </>
   )
 }
@@ -81,10 +81,10 @@ export default LoginScreen;
 
 
 const styles = StyleSheet.create({
-  title : {
-    fontFamily :'Comfortaa-Bold',
-    fontWeight :'700',
-    lineHeight : 22.3,
-    fontSize :20,
+  title: {
+    fontFamily: 'Comfortaa-Bold',
+    fontWeight: '700',
+    lineHeight: 22.3,
+    fontSize: 20,
   }
 })

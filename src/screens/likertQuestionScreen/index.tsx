@@ -7,10 +7,10 @@ import { QuestionDataTypes } from '../../types/questionDataTypes'
 import SurveyQuestionActions from '../../components/likertQuestionContent/actionButtons'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { MainNavigatorStackParamList } from '../../navigators/types'
-import { setCompleteQuestion, setCurrentStep, setQuestions, setRemainingTime } from '../../store/survey/actions'
-import { useCurrentStep, useQuestions, useRemainingTime } from '../../store/survey/hooks'
-import CompletedSurveyIcon from '../../icons/completedSurveyIcon'
+import { setCompleteQuestion, setCurrentStep, setQuestions, setRemainingTime } from '../../store/features/survey/actions'
+import { useCurrentStep, useQuestions, useRemainingTime } from '../../store/features/survey/hooks'
 import CompletedSurveyContent from '../../components/completedSurveyContent'
+import { formatTime } from '../../utils/date/formatTime'
 
 type LikertQuestionScreenPropsTypes = NativeStackScreenProps<MainNavigatorStackParamList, 'LikertQuestionScreen'>
 
@@ -29,15 +29,16 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
     setIsQuestionsLoading(true)
 
     const getAndSetQuestions = async () => {
+      //get question by category and language from i18next.
       try {
         const questions: QuestionDataTypes[] = await t(route.params.surveyCategory, { ns: 'survey', returnObjects: true });
-        setQuestions(questions);
+        setQuestions(questions)
         setIsQuestionsLoading(false)
       } catch (error) {
         setIsQuestionsLoading(false)
         setIsQuestionsError(true)
       }
-    };
+    }
 
     getAndSetQuestions()
   }, [])
@@ -58,11 +59,7 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
   }, [remainingTime])
 
 
-  const formatTime = (time: number) => {
-    const minutes = Math.floor(time / 60)
-    const seconds = time % 60;
-    return `00:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`
-  }
+ 
 
 
 
@@ -90,16 +87,16 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
   const renderContent = () => {
     if (isQuestionsLoading) return <ActivityIndicator />
     else if (isQuestionsError) return <Text>HATA !</Text>
-    
-    
+
+
     return <>
       <LikertQuestionHeader remainingTime={formatTime(remainingTime)} />
       {
-        step == 9 ?<CompletedSurveyContent /> : (
+        step == 9 ? <CompletedSurveyContent /> : (
           <>
             <SurveyQuestions selectedAnswer={selectedAnswer} setSelectedAnswer={setSelectedAnswer} />
 
-            <SurveyQuestionActions onPress={handleNextQuestion} buttonText={t('nextQuestion')}/>
+            <SurveyQuestionActions onPress={handleNextQuestion} buttonText={t('nextQuestion')} />
           </>
         )
       }

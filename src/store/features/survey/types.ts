@@ -1,4 +1,4 @@
-import { QuestionDataTypes } from "../../types/questionDataTypes"
+import { QuestionDataTypes } from "../../../types/questionDataTypes"
 
 export type QuestionsType = { questionResponseTimeInSeconds: number } & QuestionDataTypes
 

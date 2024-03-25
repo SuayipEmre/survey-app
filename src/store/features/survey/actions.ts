@@ -1,6 +1,6 @@
 import { CompleteQuestionPropsType, _completeQuestion, _setCurrentStep, _setQuestions, _setRemainingTime } from ".";
-import { QuestionDataTypes } from "../../types/questionDataTypes";
-import store from "../app/store";
+import { QuestionDataTypes } from "../../../types/questionDataTypes";
+import store from "../../app/store";
 
 export const setQuestions  = (questions : QuestionDataTypes[]) => store.dispatch(_setQuestions(questions))
 export const setCurrentStep  = (step : number) => store.dispatch(_setCurrentStep(step))

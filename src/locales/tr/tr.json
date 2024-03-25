@@ -34,5 +34,7 @@
     "today" : "Bugün",
     "list" : "Liste",
     "survey" :"Anket",
-    "finish" : "Bitir"
+    "finish" : "Bitir",
+    "surveyCompleted" : "Anket Tamamlandı!",
+    "creatingData" : "Veriler Oluşturuluyor..."
 } 

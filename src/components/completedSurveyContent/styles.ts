@@ -12,7 +12,8 @@ export default StyleSheet.create({
       top_content:{
         flex:1,
         alignItems:'center',
-        justifyContent:'center'
+        justifyContent:'center',
+        gap:8,
       },
       completed_text:{
         fontSize : 20,

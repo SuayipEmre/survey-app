@@ -1,11 +1,12 @@
 import { StyleSheet, Switch, Text, View, useColorScheme } from 'react-native'
 import React, { useState } from 'react'
-import AuthScreensContentContainer from '../../containers/AuthScreensContainer'
 import BackgroundImage from '../../components/backgroundImage'
 import Button from '../../components/button'
 import DataPolicyAgreementSwitchItem from '../../components/dataPolicyAgreementSwitchItem'
 import { Colors } from '../../style/colors'
 import { useTranslation } from 'react-i18next'
+import AuthScreensLayout from '../../layouts/authScreensLayout'
+import { firstSwitchText, secondSwitchText, thirdSwitchText } from './constants'
 
 const PDPLScreen = () => {
     const theme = useColorScheme()
@@ -14,16 +15,12 @@ const PDPLScreen = () => {
     const{t} = useTranslation()
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
-    const firstSwitchText = "*Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and?"
 
-    const secondSwitchText = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis optio laudantium autem, mollitia necessitatibus officiis. Numquam praesentium similique reiciendis saepe, corporis exercitationem"
-
-    const thirdSwitchText = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s."
 
     return (
         <View>
             <BackgroundImage />
-            <AuthScreensContentContainer>
+            <AuthScreensLayout>
 
                 <View style={{
                     width: '80%',
@@ -41,7 +38,7 @@ const PDPLScreen = () => {
                 <Button text={t('moveForward')} onPress={() => { }} />
 
 
-            </AuthScreensContentContainer>
+            </AuthScreensLayout>
         </View>
     )
 }

@@ -1,10 +1,11 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import {  Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import LeftArrowIcon from '../../../icons/leftArrow'
 import { useThemeColor } from '../../../store/features/theme/hooks'
-import { useTranslation } from 'react-i18next'
-import {  useCurrentStep, useQuestions, useRemainingTime } from '../../../store/survey/hooks'
-import { setCompleteQuestion, setCurrentStep } from '../../../store/survey/actions'
+import {  useCurrentStep, useQuestions, useRemainingTime } from '../../../store/features/survey/hooks'
+import { setCompleteQuestion, setCurrentStep } from '../../../store/features/survey/actions'
+import styles from './styles'
+
 
 type SurveyQuestionActionsPropsType = {
   onPress : () => void,
@@ -15,15 +16,13 @@ type SurveyQuestionActionsPropsType = {
 const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPress, buttonText }) => {
 
   const remainingTime: number = useRemainingTime()
-  const { t } = useTranslation()
   const questions = useQuestions()
   const step = useCurrentStep()
 
  
 
 
-
-  const handleDecreaseStep = () => {
+  const handlePreviousQuestion = () => {
     if (step == 0) {
       //clear all data
       setCompleteQuestion({
@@ -54,7 +53,7 @@ const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPr
     <View style={styles.container}>
 
       <View style={[{ backgroundColor: color.midblue }, styles.prev_question_container]}>
-        <TouchableOpacity onPress={handleDecreaseStep}>
+        <TouchableOpacity onPress={handlePreviousQuestion}>
           <LeftArrowIcon size={24} color='#fff' />
         </TouchableOpacity>
 
@@ -72,28 +71,3 @@ const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPr
 
 export default SurveyQuestionActions
 
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    gap: 20,
-    alignItems: 'center',
-    alignSelf: 'center',
-    marginBottom: 50,
-
-  },
-  prev_question_container: {
-    width: 48,
-    height: 40,
-    borderRadius: 40,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  next_question_button: {
-
-    height: 40,
-    width: 142,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderRadius: 40,
-  },
-})

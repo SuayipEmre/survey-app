@@ -5,7 +5,7 @@ import styles from './styles'
 type AuthenticationScreensContainerPropsType = {
     children: React.ReactNode
 }
-const AuthScreensContentContainer: React.FC<AuthenticationScreensContainerPropsType> = ({ children }) => {
+const AuthScreensLayout: React.FC<AuthenticationScreensContainerPropsType> = ({ children }) => {
     const theme = useColorScheme()
 
     
@@ -28,5 +28,5 @@ const AuthScreensContentContainer: React.FC<AuthenticationScreensContainerPropsT
     )
 }
 
-export default AuthScreensContentContainer
+export default AuthScreensLayout
 

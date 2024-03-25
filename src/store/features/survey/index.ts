@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { QuestionDataTypes } from "../../types/questionDataTypes";
-import { getCurrentDate } from "../../utils/date/getCurrentDate";
+import { QuestionDataTypes } from "../../../types/questionDataTypes";
+import { getCurrentDate } from "../../../utils/date/getCurrentDate";
 import { CompletedQuestionsType, QuestionsType } from "./types";
 
 

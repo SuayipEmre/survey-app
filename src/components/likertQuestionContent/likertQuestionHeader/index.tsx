@@ -6,7 +6,7 @@ import { useThemeColor } from '../../../store/features/theme/hooks'
 import styles from './styles'
 import ProgressBar from '../../progressBar'
 import { useTranslation } from 'react-i18next'
-import { useCurrentStep, useQuestions } from '../../../store/survey/hooks'
+import { useCurrentStep, useQuestions } from '../../../store/features/survey/hooks'
 
 
 type LikertQuestionHeaderPropsType = {

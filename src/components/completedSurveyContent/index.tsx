@@ -15,8 +15,8 @@ const CompletedSurveyContent = () => {
         <View style={styles.survey_completed_container}>
             <View style={styles.top_content}>
                 <CompletedSurveyIcon />
-                <Text style={styles.completed_text}>Anket Tamamlandı!</Text>
-                <Text>Veriler Oluşturuluyor</Text>
+                <Text style={styles.completed_text}>{t('surveyCompleted')}</Text>
+                <Text>{t('creatingData')}</Text>
             </View>
 
             <SurveyQuestionActions onPress={() => navigation.navigate('LandingScreen')} buttonText={t('finish')} />

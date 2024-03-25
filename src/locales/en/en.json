@@ -34,5 +34,7 @@
     "today" : "Today",
     "list" : "List",
     "survey" :"Survey",
-    "finish" : "Finish"
+    "finish" : "Finish",
+    "surveyCompleted" : "Survey Completed!",
+    "creatingData" : "Creating Data..."
 }

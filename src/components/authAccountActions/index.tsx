@@ -12,7 +12,7 @@ const AccountActions: React.FC<AccountActionsPropsType> = ({ text, onPress, butt
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <Text style={styles.account_actions_info_text}>{text} </Text>
-            <Text style={styles.account_actions_action_text}>{buttonText}</Text>
+            <Text style={styles.account_actions_action_text}>{buttonText}asdasd</Text>
         </TouchableOpacity>
     )
 }

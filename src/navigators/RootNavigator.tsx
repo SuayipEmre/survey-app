@@ -52,6 +52,7 @@ const RootNavigator: React.FC = () => {
   useEffect(() => {
 
     const getUser = async () => {
+      //get user session from async storage
       const userSession = await getUserSession()
       setUserSession(userSession)
     }
@@ -60,6 +61,7 @@ const RootNavigator: React.FC = () => {
   }, [])
 
 
+  //if there is user session on the async storage redirect user to the main navigator.
   if (userSession) {
     return (
       <NavigationContainer>

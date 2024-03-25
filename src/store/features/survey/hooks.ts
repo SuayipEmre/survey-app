@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { RootState } from "../app/store";
+import { RootState } from "../../app/store";
 
 export const useQuestions = () => useSelector((state : RootState) => state.survey.questions)
 export const useCurrentStep = () => useSelector((state : RootState) => state.survey.currentStep)
