@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { setUserSession } from "../store/features/auth/actions";
+import { setUserSession } from "../../store/features/auth/actions";
 
 
 

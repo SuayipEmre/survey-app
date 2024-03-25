@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { UserSessionType } from '../types/userSessionType';
+import { UserSessionType } from '../../types/userSessionType';
 
 
 /*

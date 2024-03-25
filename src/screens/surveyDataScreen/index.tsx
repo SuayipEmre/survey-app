@@ -6,16 +6,17 @@ import { useThemeColor } from '../../store/features/theme/hooks'
 import ListIcon from '../../icons/listIcon'
 import SurveyDataItem from '../../components/surveyDataItem'
 
+
 const SurveyDataScreen = () => {
   const { t } = useTranslation()
   const color = useThemeColor()
   return (
-    <SafeAreaView style={{ alignItems: 'center', flex:1, }}>
+    <SafeAreaView style={{ alignItems: 'center', flex: 1, }}>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={[{ color: color.primary }, styles.title]}>{t('completedSurveys')}</Text>
 
 
-        <View style={{ flexDirection: 'row', gap: 20,  marginBottom:30, }}>
+        <View style={{ flexDirection: 'row', gap: 20, marginBottom: 30, }}>
           <View style={styles.information_item_container}>
             <Text style={[{ color: color.midblue }, styles.info_value]}>30</Text>
             <Text style={[{ color: color.primary }, styles.info_desc]}>{t('score')}</Text>

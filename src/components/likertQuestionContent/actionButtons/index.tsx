@@ -3,33 +3,74 @@ import React from 'react'
 import LeftArrowIcon from '../../../icons/leftArrow'
 import { useThemeColor } from '../../../store/features/theme/hooks'
 import { useTranslation } from 'react-i18next'
+import { useCompletedQuestions, useCurrentStep, useQuestions } from '../../../store/survey/hooks'
+import { setCompleteQuestion, setCurrentStep } from '../../../store/survey/actions'
 
 type SurveyQuestionActionsPropsType = {
   setSelectedAnswer: (answer: string) => void,
-  setStep: (step: number) => void,
-  step: number,
   remainingtime : number,
 }
 
 
-const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({step, setStep, setSelectedAnswer, remainingtime}) => {
+const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({  setSelectedAnswer, remainingtime}) => {
 
 
   const{t} = useTranslation()
+  const completedQuestions = useCompletedQuestions()
+  const questions = useQuestions()
+  const step = useCurrentStep()
+
   const handleIncreaseStep = () => {
     if(step < 9){
-      setStep(step + 1)
-      console.log(1800 - remainingtime)
-      
+      //before change the question, add current question to completed questions.
+      setCompleteQuestion({
+        isAdd : true,
+        isRemove : false,
+        clearAll : false,
+        question : {
+          ...questions[step],
+          questionResponseTimeInSeconds : 1800 - remainingtime
+        }
+      })
+      setCurrentStep(step + 1)
+
       setSelectedAnswer('')
+    } else if(step == 9 ){
+        setCompleteQuestion({isCompletedSurvey : true})
     }
   }
 
+  
+  
+
   const handleDecreaseStep = () => {
+    if (step == 0){
+      setCompleteQuestion({
+        isAdd : false,
+        isRemove : false,
+        clearAll : true,
+        question : {
+          ...questions[step],
+          questionResponseTimeInSeconds : 1800 - remainingtime
+        }
+      })
+    }
     if(step > 0){
-      setStep(step - 1)
+      setCompleteQuestion({
+        isAdd : false,
+        isRemove : true,
+        clearAll : false,
+        question : {
+          ...questions[step],
+          questionResponseTimeInSeconds : 1800 - remainingtime
+        }
+      })
+      setCurrentStep(step - 1)
     }
   }
+
+
+  console.log(completedQuestions)
 
 
 

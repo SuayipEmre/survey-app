@@ -6,8 +6,8 @@ import { ProfileIcon } from '../../icons/userIcon'
 import { Colors } from '../../style/colors'
 import ProfileSectionItem from '../../components/profileSectionItem'
 import { useUserSession } from '../../store/features/auth/hooks'
-import { removeUserSession } from '../../utils/removeUserSessionFromStorage'
-import { saveUserLanguagePreference } from '../../utils/saveLanguagePreferenceToStorage'
+import { removeUserSession } from '../../utils/asyncStorage/removeUserSessionFromStorage'
+import { saveUserLanguagePreference } from '../../utils/asyncStorage/saveLanguagePreferenceToStorage'
 
 const ProfileScreen = () => {
   const [lang, setLang] = useState('en')

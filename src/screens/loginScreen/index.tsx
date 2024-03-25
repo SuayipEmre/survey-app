@@ -7,7 +7,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { AuthenticationNavigatorStackParamList } from '../../navigators/types';
 import AuthScreensContentContainer from '../../containers/AuthScreensContainer';
 import { useSendLoginRequestMutation } from '../../Services/LoginService';
-import { saveUserSessionToStorage } from '../../utils/saveUserSessionToStorage';
+import { saveUserSessionToStorage } from '../../utils/asyncStorage/saveUserSessionToStorage';
 import { setUserSession } from '../../store/features/auth/actions';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, useColorScheme } from 'react-native';

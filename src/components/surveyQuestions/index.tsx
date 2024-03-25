@@ -2,41 +2,54 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { QuestionDataTypes } from '../../types/questionDataTypes'
 import { useThemeColor } from '../../store/features/theme/hooks'
+import { useCurrentStep, useQuestions } from '../../store/survey/hooks'
 
 type SurveyQuestionsPropsType = {
   selectedAnswer: string,
   setSelectedAnswer: (answer: string) => void,
-  step: number,
-  questions: QuestionDataTypes[]
 }
 
-const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, setSelectedAnswer, step, questions }) => {
+const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, setSelectedAnswer }) => {
   const color = useThemeColor()
+  const questions = useQuestions()
+  const step = useCurrentStep()
+
   const questionItem: QuestionDataTypes = questions[step]
+  
 
   return (
     <View style={styles.container}>
-
-      <Text style={styles.question}>{questionItem.question}</Text>
-
-      <View style={styles.question_options_container}>
+  {questionItem ? (
+      <>
+        <Text style={styles.question}>{questionItem.question}</Text>
         {
-          questionItem.options.map((item, idx) => <TouchableOpacity
-            key={idx}
-            style={[
-              selectedAnswer === item ? { backgroundColor: color.midblue } : null,
-              selectedAnswer === item ? styles.active_option_button : styles.inactive_option_button
-            ]}
-            onPress={() => setSelectedAnswer(item)}
-          >
-            <Text style={[
-              selectedAnswer === item ? { backgroundColor: color.midblue } : { color: color.primary },
-              selectedAnswer === item ? styles.active_question_option : styles.inactive_question_option
-            ]}>{item}</Text>
-          </TouchableOpacity>)
+          questions.length > 0 && (
+            <View style={styles.question_options_container}>
+              {
+                questionItem.options.map((item, idx) => (
+                  <TouchableOpacity
+                    key={idx}
+                    style={[
+                      selectedAnswer === item ? { backgroundColor: color.midblue } : null,
+                      selectedAnswer === item ? styles.active_option_button : styles.inactive_option_button
+                    ]}
+                    onPress={() => setSelectedAnswer(item)}
+                  >
+                    <Text style={[
+                      selectedAnswer === item ? { backgroundColor: color.midblue } : { color: color.primary },
+                      selectedAnswer === item ? styles.active_question_option : styles.inactive_question_option
+                    ]}>{item}</Text>
+                  </TouchableOpacity>
+                ))
+              }
+            </View>
+          )
         }
-      </View>
-
+      </>
+    ) : (
+      <Text style={styles.question}>Soru bulunamadı.</Text>
+    )}
+ 
     </View>
   )
 }
@@ -66,10 +79,10 @@ const base_style = StyleSheet.create({
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap:40,
+    gap: 40,
   },
 
   question: {
@@ -83,7 +96,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 12,
     flexWrap: 'wrap',
-    justifyContent:'center',
+    justifyContent: 'center',
   },
   inactive_option_button: {
     backgroundColor: '#EFEFFF',

@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit'
 import LoginService from '../../Services/LoginService'
 import authSlice from '../features/auth'
 import themeSlice from '../features/theme'
+import surveySlice from '../survey'
 
 
 const store = configureStore({
@@ -9,6 +10,7 @@ const store = configureStore({
     reducer: {
         authSlice: authSlice,
         themeSlice: themeSlice,
+        survey : surveySlice,
         [LoginService.reducerPath]: LoginService.reducer
     },
 
