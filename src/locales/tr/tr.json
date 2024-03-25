@@ -33,5 +33,6 @@
     "total" : "Toplam",
     "today" : "Bugün",
     "list" : "Liste",
-    "survey" :"Anket"
+    "survey" :"Anket",
+    "finish" : "Bitir"
 } 

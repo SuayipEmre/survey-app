@@ -20,8 +20,6 @@ const themeSlice = createSlice({
         _setThemeColor: (state, action: PayloadAction<'light' | 'dark'>) => {
 
             state.color = Colors[action.payload]
-            console.log('on state , ' ,state.color);
-            
         
         }
     }

@@ -33,5 +33,6 @@
     "total" : "Total",
     "today" : "Today",
     "list" : "List",
-    "survey" :"Survey"
+    "survey" :"Survey",
+    "finish" : "Finish"
 }

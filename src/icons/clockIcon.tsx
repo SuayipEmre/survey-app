@@ -1,4 +1,4 @@
-import { Path, Svg, SvgAst } from "react-native-svg";
+import { Path, Svg } from "react-native-svg"
 import { IconsPropsType } from "./types";
 
 

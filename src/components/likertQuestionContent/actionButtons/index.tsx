@@ -3,66 +3,42 @@ import React from 'react'
 import LeftArrowIcon from '../../../icons/leftArrow'
 import { useThemeColor } from '../../../store/features/theme/hooks'
 import { useTranslation } from 'react-i18next'
-import { useCompletedQuestions, useCurrentStep, useQuestions } from '../../../store/survey/hooks'
+import {  useCurrentStep, useQuestions, useRemainingTime } from '../../../store/survey/hooks'
 import { setCompleteQuestion, setCurrentStep } from '../../../store/survey/actions'
 
 type SurveyQuestionActionsPropsType = {
-  setSelectedAnswer: (answer: string) => void,
-  remainingtime : number,
+  onPress : () => void,
+  buttonText : string
 }
 
 
-const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({  setSelectedAnswer, remainingtime}) => {
+const SurveyQuestionActions: React.FC<SurveyQuestionActionsPropsType> = ({  onPress, buttonText }) => {
 
-
-  const{t} = useTranslation()
-  const completedQuestions = useCompletedQuestions()
+  const remainingTime: number = useRemainingTime()
+  const { t } = useTranslation()
   const questions = useQuestions()
   const step = useCurrentStep()
 
-  const handleIncreaseStep = () => {
-    if(step < 9){
-      //before change the question, add current question to completed questions.
-      setCompleteQuestion({
-        isAdd : true,
-        isRemove : false,
-        clearAll : false,
-        question : {
-          ...questions[step],
-          questionResponseTimeInSeconds : 1800 - remainingtime
-        }
-      })
-      setCurrentStep(step + 1)
+ 
 
-      setSelectedAnswer('')
-    } else if(step == 9 ){
-        setCompleteQuestion({isCompletedSurvey : true})
-    }
-  }
 
-  
-  
 
   const handleDecreaseStep = () => {
-    if (step == 0){
+    if (step == 0) {
+      //clear all data
       setCompleteQuestion({
-        isAdd : false,
-        isRemove : false,
-        clearAll : true,
-        question : {
-          ...questions[step],
-          questionResponseTimeInSeconds : 1800 - remainingtime
-        }
+        clearAll: true,
       })
     }
-    if(step > 0){
+    if (step > 0) {
+      //remove question on completedQuestions
       setCompleteQuestion({
-        isAdd : false,
-        isRemove : true,
-        clearAll : false,
-        question : {
+        isAdd: false,
+        isRemove: true,
+        clearAll: false,
+        question: {
           ...questions[step],
-          questionResponseTimeInSeconds : 1800 - remainingtime
+          questionResponseTimeInSeconds: 1800 - remainingTime
         }
       })
       setCurrentStep(step - 1)
@@ -70,27 +46,25 @@ const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({  set
   }
 
 
-  console.log(completedQuestions)
-
 
 
   const color = useThemeColor()
   return (
-    
+
     <View style={styles.container}>
-      
-      <View style={[{  backgroundColor: color.midblue}, styles.prev_question_container]}>
+
+      <View style={[{ backgroundColor: color.midblue }, styles.prev_question_container]}>
         <TouchableOpacity onPress={handleDecreaseStep}>
-        <LeftArrowIcon size={24} color='#fff'  />
+          <LeftArrowIcon size={24} color='#fff' />
         </TouchableOpacity>
 
 
       </View>
 
-      <TouchableOpacity style={[{backgroundColor: color.midblue},styles.next_question_button]} onPress={handleIncreaseStep}>
+      <TouchableOpacity style={[{ backgroundColor: color.midblue }, styles.next_question_button]} onPress={onPress}>
         <Text style={{
           color: '#fff'
-        }}>{t('nextQuestion')}</Text>
+        }}>{buttonText}</Text>
       </TouchableOpacity>
     </View>
   )
@@ -99,27 +73,27 @@ const SurveyQuestionActions : React.FC<SurveyQuestionActionsPropsType> = ({  set
 export default SurveyQuestionActions
 
 const styles = StyleSheet.create({
-  container:{
-    flexDirection:'row',
-    gap:20,
-    alignItems:'center',
-    alignSelf :'center',
-    marginBottom : 50,
-    
+  container: {
+    flexDirection: 'row',
+    gap: 20,
+    alignItems: 'center',
+    alignSelf: 'center',
+    marginBottom: 50,
+
   },
-  prev_question_container:{
+  prev_question_container: {
     width: 48,
-        height: 40,
-        borderRadius: 40,
-        alignItems: 'center',
-        justifyContent: 'center',
-  },
-  next_question_button:{
-    
     height: 40,
-    width : 142,
-    alignItems:'center',
-    justifyContent:'center',
-    borderRadius : 40,
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  next_question_button: {
+
+    height: 40,
+    width: 142,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 40,
   },
 })
