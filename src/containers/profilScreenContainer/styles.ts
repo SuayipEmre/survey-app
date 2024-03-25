@@ -14,7 +14,6 @@ export default StyleSheet.create({
   },
   profile_text: {
     fontFamily: 'Comfortaa-Bold',
-    color: '#0300A3',
     lineHeight: 15.61,
     fontWeight: '700'
   },

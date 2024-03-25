@@ -36,5 +36,6 @@
     "survey" :"Anket",
     "finish" : "Bitir",
     "surveyCompleted" : "Anket Tamamlandı!",
-    "creatingData" : "Veriler Oluşturuluyor..."
+    "creatingData" : "Veriler Oluşturuluyor...",
+    "questionNotFound" : "Soru Bulunamadı"
 } 

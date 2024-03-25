@@ -24,6 +24,7 @@ import { getUserSession } from '../utils/asyncStorage/getUserSession';
 import { setUserSession } from '../store/features/auth/actions';
 import { TabBarSurveyIcon } from '../icons/tabBarSurveyIcon';
 import { useThemeColor } from '../store/features/theme/hooks';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 type NativeStackNavigatorParamList = {
@@ -64,22 +65,24 @@ const RootNavigator: React.FC = () => {
   //if there is user session on the async storage redirect user to the main navigator.
   if (userSession) {
     return (
-      <NavigationContainer>
+        <NavigationContainer>
         <Tab.Navigator
           initialRouteName="MainNavigator"
           screenOptions={{
+         
             headerShown: false,
             tabBarHideOnKeyboard: true,
-            tabBarActiveTintColor: theme == 'light' ? '#9593FF' : '#A0A0FF',
-            tabBarInactiveTintColor: theme == 'light' ? '#fff': '#000',
+            tabBarActiveTintColor: color.tabBar.active_text,
+            tabBarInactiveTintColor: color.tabBar.inactive_text,
             tabBarStyle: {
-              backgroundColor: color.primary,
-              position: 'absolute',
-              bottom: 30,
-              width : 340,
-              left: (width - 340) / 2,
+              backgroundColor: color.tabBar.background,
+
+              width: 340,
               borderRadius: 40,
+              marginBottom : 30,
               height: 80,
+              maxHeight : 80,
+              marginHorizontal: (width - 340) / 2,
               justifyContent: 'center'
             },
           }}>
@@ -101,24 +104,24 @@ const RootNavigator: React.FC = () => {
               tabBarLabel: '',
               tabBarItemStyle: {
                 position: 'absolute',
-                top : -20,
+                top: -20,
                 left: (340 - 50) / 2,
                 width: 50,
                 height: 50,
                 borderRadius: 25,
-            
+
               },
-              tabBarIcon: ({focused}) => (
+              tabBarIcon: ({ focused }) => (
                 <View style={{
                   width: 50,
                   height: 50,
                   borderRadius: 25,
                   alignItems: 'center',
                   justifyContent: 'center',
-                  backgroundColor: focused ? color.midblue : color.primary
+                  backgroundColor: focused ? color.midblue : color.tabBar.background
 
                 }}>
-                  <Entypo name="home" color={'#ffffff'}  size={20} />
+                  <Entypo name="home" color={'#ffffff'} size={20} />
                 </View>
               ),
             }}
@@ -128,7 +131,7 @@ const RootNavigator: React.FC = () => {
             component={ProfileStack}
             options={{
               tabBarLabel: 'Profil',
-              headerShown :false,
+              headerShown: false,
               tabBarIcon: ({ color, size }) => (
                 <>
                   <FontAwesome name="user" color={color} size={size} />

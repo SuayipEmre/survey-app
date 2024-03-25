@@ -11,12 +11,13 @@ import { useLanguage } from '../../store/features/language/hooks'
 import { removeUserSession } from '../../utils/asyncStorage/removeUserSessionFromStorage'
 import { setLanguage } from '../../store/features/language/actions'
 import { Language } from '../../types/language'
+import { useThemeColor } from '../../store/features/theme/hooks'
 
 const ProfileScreenContainer = () => {
     const { t } = useTranslation()
     const userSession = useUserSession()
     const language = useLanguage()
-
+    const color = useThemeColor()
 
 
 
@@ -43,15 +44,15 @@ const ProfileScreenContainer = () => {
 
     return (
 
-        <View style={styles.container}>
+        <View style={[{backgroundColor : color.third}, styles.container]}>
 
             <View style={styles.header}>
-                <ProfileIcon color='#0300a3' size={15} />
-                <Text style={styles.profile_text}>{t('profile')}</Text>
+                <ProfileIcon color={color.midblue} size={15} />
+                <Text style={[{color:  color.midblue}, styles.profile_text]}>{t('profile')}</Text>
             </View>
 
 
-            <Text style={styles.section_title}>{t('accountInfo')}</Text>
+            <Text style={[{color : color.secondary}, styles.section_title]}>{t('accountInfo')}</Text>
 
 
             <ProfileSectionItem title='Nickname' subText='Text' />

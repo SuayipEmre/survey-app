@@ -4,6 +4,7 @@ import { QuestionDataTypes } from '../../types/questionDataTypes'
 import { useThemeColor } from '../../store/features/theme/hooks'
 import { useCurrentStep, useQuestions } from '../../store/features/survey/hooks'
 import styles from './styles'
+import { useTranslation } from 'react-i18next'
 
 type SurveyQuestionsPropsType = {
   selectedAnswer: string,
@@ -14,7 +15,7 @@ const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, s
   const color = useThemeColor()
   const questions = useQuestions()
   const step = useCurrentStep()
-
+  const{t} = useTranslation()
   const questionItem: QuestionDataTypes = questions[step]
 
 
@@ -22,7 +23,7 @@ const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, s
     <View style={styles.container}>
       {questionItem ? (
         <>
-          <Text style={styles.question}>{questionItem.question}</Text>
+          <Text style={[{color : color.primary}, styles.question]}>{questionItem.question}</Text>
           {
             //if questions's length greater than 0, questions will be visble.
             questions.length > 0 && (
@@ -38,7 +39,8 @@ const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, s
                       onPress={() => setSelectedAnswer(item)}
                     >
                       <Text style={[
-                        selectedAnswer === item ? { backgroundColor: color.midblue } : { color: color.primary },
+                        
+                        selectedAnswer === item ? { backgroundColor: color.midblue} : { color: color.primary },
                         selectedAnswer === item ? styles.active_question_option : styles.inactive_question_option
                       ]}>{item}</Text>
                     </TouchableOpacity>
@@ -49,7 +51,7 @@ const SurveyQuestions: React.FC<SurveyQuestionsPropsType> = ({ selectedAnswer, s
           }
         </>
       ) : (
-        <Text style={styles.question}>Soru bulunamadı.</Text>
+        <Text style={styles.question}>{t('questionNotFound')}</Text>
       )}
 
     </View>

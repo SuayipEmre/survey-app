@@ -36,7 +36,6 @@ export default StyleSheet.create({
     },
     aboutUsText: {
         ...base_style.title_text,
-        color: '#0300A3',
         fontWeight: '400',
         fontFamily: 'Comfortaa-Regular',
     },

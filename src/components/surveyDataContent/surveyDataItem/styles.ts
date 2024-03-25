@@ -4,7 +4,6 @@ export default StyleSheet.create({
     information_item: {
         width: '90%',
         height: 61,
-        backgroundColor: '#E5E4E2',
         borderRadius:5,
         gap:9,
         marginTop:12,

@@ -12,7 +12,7 @@ const SurveyDataScreen = () => {
   const { t } = useTranslation()
   const color = useThemeColor()
   return (
-    <SafeAreaView style={{ alignItems: 'center', flex: 1, }}>
+    <SafeAreaView style={{ alignItems: 'center', flex: 1, backgroundColor:color.third }}>
       <ScrollView contentContainerStyle={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={[{ color: color.primary }, styles.title]}>{t('completedSurveys')}</Text>
 
@@ -21,10 +21,10 @@ const SurveyDataScreen = () => {
 
           <SurveyDataTopContentItem value={30} text={t('score')} />
 
-          <View style={{ width: 1, height: 50, backgroundColor: '#D9D9D9' }} />
+          <View style={{ width: 1, height: 50, backgroundColor: color.secondary }} />
           <SurveyDataTopContentItem value={7} text={t('total')} />
 
-          <View style={{ width: 1, height: 50, backgroundColor: '#D9D9D9' }} />
+          <View style={{ width: 1, height: 50, backgroundColor: color.secondary }} />
           <SurveyDataTopContentItem value={2} text={t('today')} />
          
 

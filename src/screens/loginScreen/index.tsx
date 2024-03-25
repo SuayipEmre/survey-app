@@ -10,8 +10,8 @@ import { saveUserSessionToStorage } from '../../utils/asyncStorage/saveUserSessi
 import { setUserSession } from '../../store/features/auth/actions';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, useColorScheme } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 import AuthScreensLayout from '../../layouts/authScreensLayout';
+import { Colors } from '../../style/colors';
 
 
 type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>

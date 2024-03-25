@@ -6,23 +6,24 @@ import { useTranslation } from 'react-i18next'
 import Button from '../../components/button'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { MainNavigatorStackParamList } from '../../navigators/types'
+import { useThemeColor } from '../../store/features/theme/hooks'
 
 const LandingScreen = () => {
   const user = useUserSession()
   const navigation = useNavigation<NavigationProp<MainNavigatorStackParamList>>()
   const { t } = useTranslation()
-
+  const color = useThemeColor()
 
 
   return (
     <>
       <BackgroundImage />
 
-      <View style={styles.content}>
+      <View style={[{backgroundColor:color.third}, styles.content]}>
 
         <View style={styles.hello_user_container}>
-          <Text style={styles.hello_text}>{t('hello')}</Text>
-          <Text style={[styles.hello_text, styles.username_text]}>{user?.username}</Text>
+          <Text style={[{color:  color.primary}, styles.hello_text]}>{t('hello')}</Text>
+          <Text style={[{color : color.midblue}, styles.hello_text,]}>{user?.username}</Text>
         </View>
 
         <Button onPress={() => navigation.navigate('SurveyCategoryScreen')} text={t('startSurvey')} />
@@ -41,15 +42,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     width: width,
     height: height * 0.4,
-    backgroundColor: '#fff',
     shadowColor: 'rgba(255, 255, 255, 0.5)',
     shadowOffset: { width: 0, height: -height * 0.15 },
     shadowOpacity: 1,
     shadowRadius: 10,
     elevation: 2,
-    gap: 10,
     alignItems: 'center',
-    paddingTop: 80,
+    paddingTop: 50,
   },
 
   hello_user_container: {
@@ -60,12 +59,9 @@ const styles = StyleSheet.create({
 
   hello_text: {
     fontFamily: 'Comfortaa-Bold',
-    color: '#000',
     fontWeight: '700',
     fontSize: 18,
     lineHeight: 20.07,
   },
-  username_text: {
-    color: '#0300A3',
-  }
+ 
 })

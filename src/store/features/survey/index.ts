@@ -5,9 +5,24 @@ import { CompletedQuestionsType, QuestionsType } from "./types";
 
 
 
+/*
+completedSurvey = [
+    {
+        surveyName = "sport",
+        questions = []
+    }
+]
+*/
 
+
+type CompletedSurveyType = {
+    surveyName : string,
+    survey : CompletedQuestionsType
+}
 
 type initialStatePropsTypes = {
+    completedSurvey : CompletedSurveyType,
+    surveyName: string,
     questions: QuestionDataTypes[],
     currentStep: number,
     completedQuestions: CompletedQuestionsType,
@@ -16,6 +31,8 @@ type initialStatePropsTypes = {
 }
 
 const initialState: initialStatePropsTypes = {
+    completedSurvey : {} as CompletedSurveyType,
+    surveyName: '',
     questions: [],
     currentStep: 0,
     completedQuestions: { completedDate: null, questions: [] },
@@ -83,8 +100,13 @@ const surveySlice = createSlice({
             state.remainingtime = action.payload
         },
 
+        _setSurveyName : (state, action : PayloadAction<string>) => {
+        state.surveyName = action.payload
+        },
+        
+
     }
 })
 
-export const { _setQuestions, _completeQuestion, _setCurrentStep, _setRemainingTime } = surveySlice.actions
+export const { _setQuestions, _completeQuestion, _setCurrentStep, _setRemainingTime, _setSurveyName } = surveySlice.actions
 export default surveySlice.reducer

@@ -5,20 +5,21 @@ import { useTranslation } from 'react-i18next'
 import { SurveyCategoryType } from '../../types/surveyCategoryTypes'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { MainNavigatorStackParamList } from '../../navigators/types'
+import { useThemeColor } from '../../store/features/theme/hooks'
 
 const SurveyCategoryScreen = () => {
     const { t } = useTranslation(['translation','surveyCategories'])
     const categories : SurveyCategoryType[] = t('categories',{ns:'surveyCategories',  returnObjects: true })
     const navigation = useNavigation<NavigationProp<MainNavigatorStackParamList>>()
-    
+    const color = useThemeColor()
     return (
         <View>
             <BackgroundImage />
             <View style={styles.content}>
                 {
                     categories.map(item => (
-                        <TouchableOpacity key={item.id} style={styles.button} onPress={() => navigation.navigate('LikertQuestionScreen', {surveyCategory : item.categoryCode})}>
-                            <Text style={styles.button_text}>{item.categoryName}</Text>
+                        <TouchableOpacity key={item.id} style={[{backgroundColor:color.secondary}, styles.button]} onPress={() => navigation.navigate('LikertQuestionScreen', {surveyCategory : item.categoryCode})}>
+                            <Text style={[{color : color.primary}, styles.button_text]}>{item.categoryName}</Text>
                         </TouchableOpacity>
                     ))
                 }
@@ -40,7 +41,6 @@ const styles = StyleSheet.create({
         gap:12,
     },
     button:{
-        backgroundColor:'#fff8',
         width :'50%',
         alignItems:'center',
         justifyContent:'center',

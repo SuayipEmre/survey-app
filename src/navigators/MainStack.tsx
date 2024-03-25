@@ -30,7 +30,7 @@ export const MainStack: React.FC = () => {
          display: "none" } }) :
       navigation.setOptions({ tabBarStyle: {
          display: "true",
-          backgroundColor: color.primary,
+          backgroundColor: color.tabBar.background,
           position: 'absolute',
           bottom: 30,
           width : 340,

@@ -6,17 +6,18 @@ import SurveyQuestionActions from '../likertQuestionContent/actionButtons'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { MainNavigatorStackParamList } from '../../navigators/types'
 import { useTranslation } from 'react-i18next'
+import { useThemeColor } from '../../store/features/theme/hooks'
 
 const CompletedSurveyContent = () => {
     const navigation = useNavigation<NavigationProp<MainNavigatorStackParamList>>()
     const { t } = useTranslation()
-
+    const color  = useThemeColor()
     return (
         <View style={styles.survey_completed_container}>
             <View style={styles.top_content}>
                 <CompletedSurveyIcon />
                 <Text style={styles.completed_text}>{t('surveyCompleted')}</Text>
-                <Text>{t('creatingData')}</Text>
+                <Text style={{color : color.primary}}>{t('creatingData')}</Text>
             </View>
 
             <SurveyQuestionActions onPress={() => navigation.navigate('LandingScreen')} buttonText={t('finish')} />

@@ -50,7 +50,6 @@ export default StyleSheet.create({
     },
     active_question_option: {
         ...base_style.option_text,
-        color: '#fff',
         lineHeight: 20.07,
     },
     inactive_question_option: {
