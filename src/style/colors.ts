@@ -28,17 +28,7 @@ export const Colors = {
 
 /*
 primary => text,
-secondary => element,
+secondary => elements,
 third =< background.
 */
 
-/*
-
-    tabBarActiveTintColor: theme == 'light' ? '#9593FF' : '#A0A0FF',
-            tabBarInactiveTintColor: theme == 'light' ? '#fff': '#000',
- tabBar:{
-        background : string,
-        inactive_text : string
-        active_text : string
-    },
-*/

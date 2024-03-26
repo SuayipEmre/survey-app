@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+import commonStyles from "../../style/commonStyles";
 
 const base_style = StyleSheet.create({
 
     text: {
-        fontWeight: '400',
+        ...commonStyles.regularText,
         fontSize: 8,
-        fontFamily :'Comfortaa-Regular',
     },
 
 
@@ -14,14 +14,14 @@ const base_style = StyleSheet.create({
 })
 
 
+const {height} = Dimensions.get('window')
 export default StyleSheet.create({
     container: {
         width: '70%',
         gap: 6,
     },
     label_text: {
-        fontFamily :'Comfortaa-SemiBold',
-        fontWeight: '600',
+       ...commonStyles.semiBoldText,
         fontSize: 12,
     },
     info_text: {
@@ -33,7 +33,7 @@ export default StyleSheet.create({
         bottom: '40%',
     },
     input: {
-        height: 40,
+        height: height * 0.05,
         borderRadius: 10,
         paddingHorizontal: 10,
     },

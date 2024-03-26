@@ -7,12 +7,14 @@ import { Colors } from '../../style/colors'
 import { useTranslation } from 'react-i18next'
 import AuthScreensLayout from '../../layouts/authScreensLayout'
 import { firstSwitchText, secondSwitchText, thirdSwitchText } from './constants'
+import commonStyles from '../../style/commonStyles'
+import { AuthScreens } from '../../types/authScreensEnum'
 
 const PDPLScreen = () => {
     const theme = useColorScheme()
     const color = Colors[theme!]
     const [isEnabled, setIsEnabled] = useState(false)
-    const{t} = useTranslation()
+    const { t } = useTranslation()
     const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
 
@@ -20,14 +22,14 @@ const PDPLScreen = () => {
     return (
         <View>
             <BackgroundImage />
-            <AuthScreensLayout>
+            <AuthScreensLayout activeScreen={AuthScreens.signup}>
 
                 <View style={{
                     width: '80%',
                     alignItems: 'center',
                 }}>
-                    <Text style={[{color : color.primary},styles.title]}>{t('sensitiveDataMessage')}</Text>
-                    <Text style={{ fontSize: 12, fontWeight: '400', textAlign: 'center',  fontFamily :'Comfortaa-Bold' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's</Text>
+                    <Text style={[{ color: color.primary }, styles.title]}>{t('sensitiveDataMessage')}</Text>
+                    <Text style={{ fontSize: 12, fontWeight: '400', textAlign: 'center', fontFamily: 'Comfortaa-Bold' }}>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum has been the industry's</Text>
 
 
                     <DataPolicyAgreementSwitchItem isRequiredField text={firstSwitchText} />
@@ -47,15 +49,13 @@ export default PDPLScreen
 
 const styles = StyleSheet.create({
     title: {
-        fontFamily :'Comfortaa-Bold',
-        fontWeight: '700',
+        ...commonStyles.boldText,
         fontSize: 14,
         marginVertical: 7,
     },
     options_container: {
         width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...commonStyles.centerElementsInRow,
         gap: 8,
         marginVertical: 10,
     },
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
         width: 280,
         color: '#1d1d1b',
         flexWrap: 'wrap',
-        fontWeight: '400',
+        ...commonStyles.regularText,
         fontSize: 12
     },
 })

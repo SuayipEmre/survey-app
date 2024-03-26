@@ -7,10 +7,12 @@ import ListIcon from '../../icons/listIcon'
 import SurveyDataItem from '../../components/surveyDataContent/surveyDataItem'
 import SurveyDataTopContentItem from '../../components/surveyDataContent/topContentItem'
 import { useCompletedSurveys } from '../../store/features/survey/hooks'
-import i18 from '../../Services/i18next'
+import i18 from '../../i18n/i18n'
+import commonStyles from '../../style/commonStyles'
+
 
 const SurveyDataScreen = () => {
-  const [todayCount, setTodayCount] = useState(0) 
+  const [todayCount, setTodayCount] = useState(0)
   const { t } = useTranslation()
   const color = useThemeColor()
   const completedSurveys = useCompletedSurveys()
@@ -28,10 +30,10 @@ const SurveyDataScreen = () => {
 
 
 
-  
 
 
-  const isToday = (dates : any) => {
+
+  const isToday = (dates: any) => {
     const today = new Date();
     const dateTrArray = dates.date_tr.split(".");
     const dateEnArray = dates.date_en.split("/");
@@ -65,19 +67,19 @@ const SurveyDataScreen = () => {
 
 
         <View style={styles.content_title_container}>
-          <ListIcon size={10} color='#000' />
+          <ListIcon size={10} color={color.primary} />
           <Text style={styles.list_text}>{t('list')}</Text>
         </View>
 
         {
-          completedSurveys.length > 0 && completedSurveys.map((item, idx) => {
-
-
-
-            return <SurveyDataItem key={idx} time={item.survey.completedDate?.time} date={
-              i18.language == 'tr' ? item.survey.completedDate?.date.date_tr : item.survey.completedDate?.date.date_en
-            } />
-          })
+          completedSurveys.length > 0 && completedSurveys.map((item, idx) => <SurveyDataItem
+            key={idx}
+            time={item.survey.completedDate?.time}
+            date={i18.language == 'tr' ?
+              item.survey.completedDate?.date.date_tr :
+              item.survey.completedDate?.date.date_en}
+          />
+          )
         }
 
       </ScrollView>
@@ -94,8 +96,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontFamily: 'Comfortaa-Bold',
-    fontWeight: '700',
+    ...commonStyles.boldText,
     fontSize: 16,
     lineHeight: 17.84,
     marginVertical: 40,
@@ -104,15 +105,13 @@ const styles = StyleSheet.create({
   content_title_container: {
     width: '90%',
     alignSelf: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
+    ...commonStyles.centerElementsInRow,
     gap: 6,
     marginTop: 12,
 
   },
   list_text: {
-    fontFamily: 'Comfortaa-Bold',
-    fontWeight: '700',
+    ...commonStyles.boldText,
     fontSize: 12,
     lineHeight: 13.38
   },

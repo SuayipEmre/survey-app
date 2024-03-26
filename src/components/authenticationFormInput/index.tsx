@@ -8,6 +8,7 @@ import {
 import Entypo from 'react-native-vector-icons/Entypo'
 import styles from './styles'
 import { Colors } from '../../style/colors';
+import { useThemeColor } from '../../store/features/theme/hooks';
 
 
 type AuthenticationInputPropsType = {
@@ -28,19 +29,7 @@ const AuthenticationFormInput: React.FC<AuthenticationInputPropsType> = ({
     value,
     onChangeText
 }) => {
-    const theme = useColorScheme()
-    const color = Colors[theme!]
-
-
-    const c = {
-        light: {
-            bg: '#fff'
-
-        },
-        dark: {
-            bg: '#000'
-        }
-    }
+    const color = useThemeColor()
 
     return (
         <View style={styles.container}>
@@ -49,7 +38,7 @@ const AuthenticationFormInput: React.FC<AuthenticationInputPropsType> = ({
                 <TextInput
                     value={value}
                     secureTextEntry={isSecure}
-                    style={[{ backgroundColor: c[theme!].bg }, styles.input]}
+                    style={[{ backgroundColor: color.third }, styles.input]}
                     selectionColor={color.primary}
                     onChangeText={onChangeText}
 

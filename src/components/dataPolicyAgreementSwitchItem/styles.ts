@@ -1,15 +1,15 @@
 import { StyleSheet } from "react-native";
+import commonStyles from "../../style/commonStyles"
 
 export default StyleSheet.create({
     container: {
         width: '100%',
-        flexDirection: 'row',
-        alignItems: 'center',
+        ...commonStyles.centerElementsInRow,
         gap: 8,
         marginVertical: 10,
     },
     text: {
-        fontFamily : 'Comfortaa-Regular',
+        ...commonStyles.regularText,
         width:'80%',
         fontWeight: '400',
         fontSize: 12,

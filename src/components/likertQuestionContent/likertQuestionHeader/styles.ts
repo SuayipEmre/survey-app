@@ -1,6 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native"
+import commonStyles from "../../../style/commonStyles"
 
 const { width, height } = Dimensions.get('window')
+
+
 export default StyleSheet.create({
   container: {
     height: height * 0.22,
@@ -17,8 +20,7 @@ export default StyleSheet.create({
     borderRadius: 19,
   },
   top_content:{
-    flexDirection: 'row',
-    alignItems: 'center',
+    ...commonStyles.centerElementsInRow,
     justifyContent: 'space-between',
     paddingHorizontal: 12,
   },
@@ -26,8 +28,7 @@ export default StyleSheet.create({
     position: 'absolute',
     top: 44,
     left: '20%',
-    fontFamily: 'Comfortaa-Regular',
-    fontWeight: '400',
+    ...commonStyles.regularText,
     lineHeight: 15.61,
     color: '#fff',
   },
@@ -37,8 +38,7 @@ export default StyleSheet.create({
     gap: 12
   },
   survey_topic_title:{
-    fontFamily: 'Comfortaa-Bold',
-    fontWeight: 'bold',
+    ...commonStyles.boldText,
     fontSize: 14,
     lineHeight: 15.61,
     color: '#fff'

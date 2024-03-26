@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import commonStyles from "../../style/commonStyles";
 
 export default StyleSheet.create({
     button: {
@@ -8,9 +9,8 @@ export default StyleSheet.create({
         borderRadius: 20,
     },
     button_text: {
-        fontFamily :'Comfortaa-SemiBold',
+       ...commonStyles.semiBoldText,
         color: '#fff',
-        fontWeight: '600',
         fontSize: 14,
     },
 })

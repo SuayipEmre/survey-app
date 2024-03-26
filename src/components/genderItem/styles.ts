@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-
+import commonStyles from "../../style/commonStyles"
 export default StyleSheet.create({
     container: {
         width: '40%',
@@ -9,9 +9,8 @@ export default StyleSheet.create({
         borderRadius: 8,
     },
     genre_text: {
-        fontFamily :'Comfortaa-SemiBold',
+        ...commonStyles.semiBoldText,
         fontSize: 12,
-        fontWeight: '600'
     }
 
 })

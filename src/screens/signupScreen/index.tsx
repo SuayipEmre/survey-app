@@ -9,7 +9,8 @@ import { AuthenticationNavigatorStackParamList } from '../../navigators/types'
 import GenderItem from '../../components/genderItem'
 import { useTranslation } from 'react-i18next'
 import AuthScreensLayout from '../../layouts/authScreensLayout'
-
+import commonStyles from '../../style/commonStyles'
+import { AuthScreens } from '../../types/authScreensEnum'
 type SignUpScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'SignupScreen'>
 
 const SignUpScreen: React.FC<SignUpScreenPropsTypes> = ({ navigation }) => {
@@ -18,7 +19,7 @@ const SignUpScreen: React.FC<SignUpScreenPropsTypes> = ({ navigation }) => {
   return (
     <View>
       <BackgroundImage />
-      <AuthScreensLayout>
+      <AuthScreensLayout activeScreen={AuthScreens.signup}>
 
         <View style={{ width: '70%' }}>
           <Text style={styles.select_gender_title}>{t('selectGender')}</Text>
@@ -46,7 +47,7 @@ export default SignUpScreen
 
 const styles = StyleSheet.create({
   select_gender_title: {
-    fontFamily: 'Comfortaa-SemiBold',
+   ...commonStyles.semiBoldText,
     marginVertical: 15,
   },
   gender_item_container: {

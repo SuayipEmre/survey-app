@@ -1,8 +1,8 @@
 import { StyleSheet } from 'react-native'
+import commonStyles from '../../style/commonStyles'
 export default StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    ...commonStyles.centerElementsInRow,
     gap: 8,
   },
   progressBar: {
@@ -23,15 +23,13 @@ export default StyleSheet.create({
     color: '#fff',
   },
   steps_text: {
-    fontFamily: 'Comfortaa-SemiBold',
+    ...commonStyles.semiBoldText,
     fontSize: 10,
     lineHeight: 11.15,
-    fontWeight: '600',
     color: '#fff',
     opacity: 0.5,
   },
   steps_container: {
-    flexDirection: 'row',
-    alignItems: 'center'
+    ...commonStyles.centerElementsInRow,
   },
 })

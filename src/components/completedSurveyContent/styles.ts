@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import commonStyles from "../../style/commonStyles";
 
 export default StyleSheet.create({
     survey_completed_container:{
@@ -17,10 +18,10 @@ export default StyleSheet.create({
       },
       completed_text:{
         fontSize : 20,
-        fontWeight :'600',
         lineHeight :22.3,
         textAlign :'center',
-        fontFamily :'Comfortaa-SemiBold',
+        ...commonStyles.semiBoldText,
+        
       },
       creatingData:{
         fontSize :16,

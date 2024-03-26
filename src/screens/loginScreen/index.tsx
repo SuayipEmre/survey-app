@@ -9,10 +9,11 @@ import { useSendLoginRequestMutation } from '../../Services/LoginService';
 import { saveUserSessionToStorage } from '../../utils/asyncStorage/userSession/saveUserSessionToStorage';
 import { setUserSession } from '../../store/features/auth/actions';
 import { useTranslation } from 'react-i18next';
-import { StyleSheet, Text, useColorScheme } from 'react-native';
+import { ActivityIndicator, StyleSheet, Text, useColorScheme } from 'react-native';
 import AuthScreensLayout from '../../layouts/authScreensLayout';
 import { Colors } from '../../style/colors';
-
+import commonStyles from '../../style/commonStyles'
+import { AuthScreens } from '../../types/authScreensEnum';
 
 type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>
 
@@ -24,7 +25,7 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   const color = Colors[theme!]
 
 
-  const [sendLoginRequest, { isError, isLoading, data }] = useSendLoginRequestMutation()
+  const [sendLoginRequest, { isError, isLoading }] = useSendLoginRequestMutation()
 
   const handleLoginRequest = async () => {
     const credentials = {
@@ -33,9 +34,15 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
     }
 
     try {
-      await sendLoginRequest(credentials)
-      await saveUserSessionToStorage(credentials)
-      setUserSession(credentials)
+      const response = await sendLoginRequest(credentials)
+
+      //if there is no error and there is data save user to asyncstorage
+      if (!response?.error && response?.data) {
+        await saveUserSessionToStorage(credentials)
+        setUserSession(credentials)
+        return
+      }
+
 
     } catch (e) {
       console.log('error', e)
@@ -44,14 +51,15 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   }
 
 
+  const renderContent = () => {
 
-  return (
-    <>
-      <BackgroundImage />
+    if (isError) return <Text>Error</Text>
+    else if (isLoading) return <ActivityIndicator />
 
-
-      <AuthScreensLayout>
+    return (
+      <>
         <Text style={[{ color: color.primary }, styles.title]}>{t('welcome')}</Text>
+
         <AuthenticationFormInput
           labelText='Nickname'
           subText={t('privacyMessage')}
@@ -71,6 +79,19 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
         <Button text={t('login')} onPress={handleLoginRequest} />
 
         <AccountActions text={t('notMember')} buttonText={t('createAccount')} onPress={() => navigation.navigate('SignupScreen')} />
+      </>
+    )
+  }
+
+  return (
+    <>
+      <BackgroundImage />
+
+
+      <AuthScreensLayout activeScreen={AuthScreens.login}>
+        {
+          renderContent()
+        }
       </AuthScreensLayout>
     </>
   )
@@ -82,8 +103,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   title: {
-    fontFamily: 'Comfortaa-Bold',
-    fontWeight: '700',
+    ...commonStyles.boldText,
     lineHeight: 22.3,
     fontSize: 20,
   }

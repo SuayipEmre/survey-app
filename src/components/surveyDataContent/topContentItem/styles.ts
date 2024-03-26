@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import commonStyles from "../../../style/commonStyles"
 
 export default StyleSheet.create({
     information_item_container: {
@@ -8,15 +9,13 @@ export default StyleSheet.create({
         gap: 2,
       },
       info_value: {
-        fontFamily: 'Comfortaa-Regular',
+        ...commonStyles.regularText,
         fontSize: 30,
         lineHeight: 33.45,
-        fontWeight: '400'
       },
       info_desc: {
-        fontWeight: '700',
+        ...commonStyles.boldText,
         fontSize: 16,
         lineHeight: 17.84,
-        fontFamily: 'Comfortaa-Bold',
       },
 })

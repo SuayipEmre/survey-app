@@ -1,4 +1,4 @@
-import { Text, TouchableOpacity, View } from 'react-native'
+import { Text, TouchableOpacity, View, useColorScheme } from 'react-native'
 import React from 'react'
 import { QuestionDataTypes } from '../../types/questionDataTypes'
 import { useThemeColor } from '../../store/features/theme/hooks'
@@ -13,18 +13,18 @@ const SurveyQuestions: React.FC = () => {
   const color = useThemeColor()
   const questions = useQuestions()
   const step = useCurrentStep()
-  const{t} = useTranslation()
+  const { t } = useTranslation()
   const questionItem: QuestionDataTypes = questions[step]
   const selectedAnswer = useSelectedAnswer()
-  console.log('active step : ' ,step)
-  
+  const colorScheme = useColorScheme()
 
-  
+
+
   return (
     <View style={styles.container}>
       {questionItem ? (
         <>
-          <Text style={[{color : color.primary}, styles.question]}>{questionItem.question}</Text>
+          <Text style={[{ color: color.primary }, styles.question]}>{questionItem.question}</Text>
           {
             //if questions's length greater than 0, questions will be visible.
             questions.length > 0 && (
@@ -34,15 +34,16 @@ const SurveyQuestions: React.FC = () => {
                     <TouchableOpacity
                       key={idx}
                       style={[
-                        selectedAnswer === item ? { backgroundColor: color.midblue } : null,
+                        selectedAnswer === item && { backgroundColor: color.midblue },
                         selectedAnswer === item ? styles.active_option_button : styles.inactive_option_button
                       ]}
                       onPress={() => setSelectedAnswer(item)}
                     >
                       <Text style={[
-                        
-                        selectedAnswer === item ? { backgroundColor: color.midblue} : { color: color.primary },
-                        selectedAnswer === item ? styles.active_question_option : styles.inactive_question_option
+
+                        selectedAnswer === item && colorScheme == 'light' ? { color: '#fff' } : { color: color.primary },
+                        selectedAnswer != item && colorScheme == 'light' ? { color: color.primary } : { color: color.secondary},
+                        selectedAnswer === item ? styles.active_question_option : styles.inactive_question_option,
                       ]}>{item}</Text>
                     </TouchableOpacity>
                   ))

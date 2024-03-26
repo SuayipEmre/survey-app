@@ -7,7 +7,7 @@ import Button from '../../components/button'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { MainNavigatorStackParamList } from '../../navigators/types'
 import { useThemeColor } from '../../store/features/theme/hooks'
-import { useCompletedSurveys } from '../../store/features/survey/hooks'
+import commonStyles from '../../style/commonStyles'
 
 const LandingScreen = () => {
   const user = useUserSession()
@@ -15,9 +15,6 @@ const LandingScreen = () => {
   const { t } = useTranslation()
   const color = useThemeColor()
 
-  const completedSurveys = useCompletedSurveys()
-
-  console.log('completedSurveys', completedSurveys[0]?.survey.completedDate);
   
     
   return (
@@ -63,8 +60,7 @@ const styles = StyleSheet.create({
   },
 
   hello_text: {
-    fontFamily: 'Comfortaa-Bold',
-    fontWeight: '700',
+   ...commonStyles.boldText,
     fontSize: 18,
     lineHeight: 20.07,
   },

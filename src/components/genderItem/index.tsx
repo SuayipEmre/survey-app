@@ -1,26 +1,17 @@
-import { Text, View, useColorScheme } from 'react-native'
+import { Text, View } from 'react-native'
 import React from 'react'
 import styles from './styles'
+import { useThemeColor } from '../../store/features/theme/hooks'
 
 
 type GenderItemPropsTypes = {
     gender: string
 }
 const GenderItem: React.FC<GenderItemPropsTypes> = ({ gender }) => {
+    const color = useThemeColor()
 
-    const theme = useColorScheme()
-
-    const color = {
-        light: {
-            bg: '#fff'
-
-        },
-        dark: {
-            bg: '#000'
-        }
-    }
     return (
-        <View style={[{ backgroundColor: color[theme!].bg }, styles.container]}>
+        <View style={[{ backgroundColor: color.third }, styles.container]}>
             <Text style={styles.genre_text}>{gender}</Text>
         </View>
     )

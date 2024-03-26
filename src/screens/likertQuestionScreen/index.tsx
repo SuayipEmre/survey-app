@@ -31,9 +31,8 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
     setIsQuestionsLoading(true)
     setSurveyName(route.params.surveyCategory)
 
-
     const getAndSetQuestions = async () => {
-      //get question by category and language from i18next.
+      //get questions by category and language from i18next.
       try {
         const questions: QuestionDataTypes[] = await t(route.params.surveyCategory, { ns: 'survey', returnObjects: true });
         setQuestions(questions)
@@ -48,22 +47,18 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
 
   }, [])
 
-  const asyncGetUnfinishedSurvey = async () => {
-    await getIsUnfinishedSurvey(route.params.surveyCategory)
-  }
+  const asyncGetUnfinishedSurvey = async () => await getIsUnfinishedSurvey(route.params.surveyCategory)
 
-  /*
-       If the step is between 0 and 9, it means that the user has not finished the survey.
-        The survey is saved in the storage as an unfinished survey.
-       */
-  const asyncSetUnfinishedSurvey = async () => {
-    await saveunfinishedSurveyToStorage(step, route.params.surveyCategory)
-  }
+
+
+  //The survey is saved in the storage as an unfinished survey.
+  const asyncSetUnfinishedSurvey = async () => await saveunfinishedSurveyToStorage(step, route.params.surveyCategory)
+
   useEffect(() => {
     asyncGetUnfinishedSurvey()
 
     return () => {
-      if (step > 0 && step < 9)  asyncSetUnfinishedSurvey()
+      if (step > 0 && step < 9) asyncSetUnfinishedSurvey()
 
     }
 

@@ -6,8 +6,8 @@ import { SurveyCategoryType } from '../../types/surveyCategoryTypes'
 import { NavigationProp, useNavigation } from '@react-navigation/native'
 import { MainNavigatorStackParamList } from '../../navigators/types'
 import { useThemeColor } from '../../store/features/theme/hooks'
-import { clearAllQuestionData } from '../../store/features/survey/actions'
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import commonStyles from '../../style/commonStyles'
 
 const SurveyCategoryScreen = () => {
     const { t } = useTranslation(['translation', 'surveyCategories'])
@@ -69,8 +69,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     button_text: {
-        fontWeight: 'bold',
         fontSize: 20,
-        fontFamily: 'Comfortaa-Bold',
+        ...commonStyles.boldText,
     },
 })

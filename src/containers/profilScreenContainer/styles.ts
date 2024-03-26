@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native"
+import commonStyles from "../../style/commonStyles"
 
 const { width } = Dimensions.get('window')
 export default StyleSheet.create({
@@ -13,14 +14,12 @@ export default StyleSheet.create({
     gap: 8,
   },
   profile_text: {
-    fontFamily: 'Comfortaa-Bold',
     lineHeight: 15.61,
-    fontWeight: '700'
+    ...commonStyles.boldText,
   },
   body_content: {
-    flexDirection: 'row',
+    ...commonStyles.centerElementsInRow,
     justifyContent: 'space-between',
-    alignItems: 'center',
     height: 61,
     paddingHorizontal: 7,
     borderRadius: 5,
@@ -29,8 +28,7 @@ export default StyleSheet.create({
   body_content_item: {
   },
   section_title: {
-    fontFamily: 'Comfortaa-Regular',
-    fontWeight: '400',
+   ...commonStyles.regularText,
     fontSize: 12,
     lineHeight: 13.38,
     color: '#B9B9B9',
