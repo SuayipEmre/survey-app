@@ -11,6 +11,6 @@ export const saveUserSessionToStorage = async(userData : UserSessionType) => {
       // Save user session data to storage
         await AsyncStorage.setItem('userSession', JSON.stringify(userData))
       } catch (error) {
-        console.log("Oturum kaydedilirken bir hata oluştu: ", error);
+        console.log("error ", error);
       }
 }

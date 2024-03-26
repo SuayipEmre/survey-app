@@ -1,4 +1,4 @@
-import { Text, View } from 'react-native'
+import { View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import LikertQuestionHeader from '../../components/likertQuestionContent/likertQuestionHeader'
 import SurveyQuestions from '../../components/surveyQuestions'

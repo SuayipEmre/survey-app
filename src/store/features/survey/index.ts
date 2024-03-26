@@ -89,7 +89,6 @@ const surveySlice = createSlice({
             state.remainingtime = 1800
             state.questionResponseTime = 0
             state.currentStep = 0
-            console.log('cleaned question data' , state.currentStep)
             
             
         }

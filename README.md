@@ -18,6 +18,7 @@ In the application, users can participate in surveys.
     - `cd ..`
 3. Start the project: `npm run ios or npm run android`
 
+
 ### Tech && Tools
 1. React Native
 2. TypeScript
@@ -28,6 +29,16 @@ In the application, users can participate in surveys.
 7. React Native SVG 
 8. Lottie
 
+
+### Important Note!
+##### The login process can only be done with users existing in the https://fakestoreapi.com/users endpoint.
+
+
+
+
+#####  Example User:
+- username: "mor_2314",
+-  password: "83r5^_"
 
 
 

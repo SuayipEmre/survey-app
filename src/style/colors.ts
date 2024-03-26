@@ -29,6 +29,6 @@ export const Colors = {
 /*
 primary => text,
 secondary => elements,
-third =< background.
+third =>background.
 */
 

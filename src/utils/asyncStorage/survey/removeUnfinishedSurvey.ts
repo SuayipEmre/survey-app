@@ -11,7 +11,7 @@ export const removeUnfinishedSurveyFromStorage = async (surveyName : string) => 
         try {
             await AsyncStorage.removeItem(`unfinished/${surveyName}`);
         } catch (error) {
-            console.log("AsyncStorage'den veri silinirken bir hata oluştu: ", error);
+            console.log("error ", error);
         }
     } catch (error) {
 

@@ -10,16 +10,6 @@ type AuthenticationScreensContainerPropsType = {
 const AuthScreensLayout: React.FC<PropsWithChildren<AuthenticationScreensContainerPropsType>> = ({ children, activeScreen }) => {
     const theme = useColorScheme()
 
-
-
-    const color = {
-        light: {
-            bg: 'rgba(255, 255, 255, 0.5)' // #ffffff8
-        },
-        dark: {
-            bg: 'rgba(0, 0, 0, 0.5)' // #00000080
-        }
-    }
     return (
         <View style={[
             theme == 'light' ? {backgroundColor:'rgba(255, 255, 255, 0.8)'} : { backgroundColor:'rgba(0, 0, 0, 0.8)'},

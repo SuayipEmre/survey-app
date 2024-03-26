@@ -12,6 +12,6 @@ export const saveUserLanguagePreference = async(lng : string) => {
       // Save user's language preference 
         await AsyncStorage.setItem('languagePreference', JSON.stringify(lng))
       } catch (error) {
-        console.log("Oturum kaydedilirken bir hata oluştu: ", error);
+        console.log("error ", error);
       }
 }
