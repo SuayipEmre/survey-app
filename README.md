@@ -1,79 +1,56 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-# Getting Started
+# Survey App
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+In the application, users can participate in surveys.
 
-## Step 1: Start the Metro Server
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+### Features
+1. Login - Logout
+2. Dark & Light mode
+3. Language Support (TR-EN)
+4. Surveys, Survey by category
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### Usage
+1. Clone the repository: `https://github.com/SuayipEmre/survey-app.git`
+2. Install dependencies: 
+    - `npm install`
+    - `cd ios && pod install`
+    - `cd ..`
+3. Start the project: `npm run ios or npm run android`
 
-```bash
-# using npm
-npm start
+### Tech && Tools
+1. React Native
+2. TypeScript
+3. React Navigation
+4. Redux toolkit
+5. I18next
+6. Async-Storage
+7. React Native SVG 
+8. Lottie
 
-# OR using Yarn
-yarn start
-```
 
-## Step 2: Start your Application
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
 
-### For Android
 
-```bash
-# using npm
-npm run android
+<div style="display: flex; "> 
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/login.png" alt="login" width="300"/>
 
-# OR using Yarn
-yarn android
-```
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/errorlogin.png" alt="login error" width="300"/>
 
-### For iOS
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/signup.png" alt="signup" width="300"/>
 
-```bash
-# using npm
-npm run ios
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/kvkk.png" alt="kvkk" width="300"/>
 
-# OR using Yarn
-yarn ios
-```
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/landing.png" alt="landing" width="300"/>
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/surveyCategories.png" alt="categories" width="300"/>
 
-## Step 3: Modifying your App
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/question.png" alt="questions" width="300"/>
 
-Now that you have successfully run the app, let's modify it.
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/completed.png" alt="completed" width="300"/>
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/surveyData.png" alt="survey data" width="300"/>
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+<img src="https://raw.githubusercontent.com/SuayipEmre/survey-app/main/src/assets/images/profile.png" alt="profile" width="300"/>
+</div>
