@@ -9,13 +9,15 @@ import { MainNavigatorStackParamList } from '../../navigators/types'
 import { useThemeColor } from '../../store/features/theme/hooks'
 import commonStyles from '../../style/commonStyles'
 
+
+
 const LandingScreen = () => {
   const user = useUserSession()
   const navigation = useNavigation<NavigationProp<MainNavigatorStackParamList>>()
   const { t } = useTranslation()
   const color = useThemeColor()
-
   
+  const loading = true
     
   return (
     <>

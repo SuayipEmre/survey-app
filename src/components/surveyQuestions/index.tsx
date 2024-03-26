@@ -27,10 +27,10 @@ const SurveyQuestions: React.FC = () => {
           <Text style={[{ color: color.primary }, styles.question]}>{questionItem.question}</Text>
           {
             //if questions's length greater than 0, questions will be visible.
-            questions.length > 0 && (
+            questions?.length > 0 && (
               <View style={styles.question_options_container}>
                 {
-                  questionItem.options.map((item, idx) => (
+                  questionItem?.options?.map((item, idx) => (
                     <TouchableOpacity
                       key={idx}
                       style={[

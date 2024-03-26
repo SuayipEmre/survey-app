@@ -9,8 +9,12 @@ import AuthScreensLayout from '../../layouts/authScreensLayout'
 import { firstSwitchText, secondSwitchText, thirdSwitchText } from './constants'
 import commonStyles from '../../style/commonStyles'
 import { AuthScreens } from '../../types/authScreensEnum'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { AuthenticationNavigatorStackParamList } from '../../navigators/types'
 
-const PDPLScreen = () => {
+
+type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'PDPLScreen'>
+const PDPLScreen : React.FC<LoginScreenPropsTypes> = ({navigation}) => {
     const theme = useColorScheme()
     const color = Colors[theme!]
     const [isEnabled, setIsEnabled] = useState(false)
@@ -37,7 +41,7 @@ const PDPLScreen = () => {
                     <DataPolicyAgreementSwitchItem value={isEnabled} onChange={toggleSwitch} text={thirdSwitchText} />
 
                 </View>
-                <Button text={t('moveForward')} onPress={() => { }} />
+                <Button text={t('moveForward')} onPress={() => navigation.navigate('LoginScreen')} />
 
 
             </AuthScreensLayout>

@@ -1,4 +1,4 @@
-import { ActivityIndicator, Text, View } from 'react-native'
+import { Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import LikertQuestionHeader from '../../components/likertQuestionContent/likertQuestionHeader'
 import SurveyQuestions from '../../components/surveyQuestions'
@@ -8,16 +8,18 @@ import SurveyQuestionActions from '../../components/likertQuestionContent/action
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { MainNavigatorStackParamList } from '../../navigators/types'
 import { questionOperations, setCurrentStep, setQuestions, setRemainingTime, setSelectedAnswer, setSurveyName } from '../../store/features/survey/actions'
-import { useCurrentStep, useQuestions, useRemainingTime, useSelectedAnswer } from '../../store/features/survey/hooks'
+import { useCurrentStep, useQuestions, useRemainingTime, useSelectedAnswer, useSurveyName } from '../../store/features/survey/hooks'
 import CompletedSurveyContent from '../../components/completedSurveyContent'
 import { useThemeColor } from '../../store/features/theme/hooks'
 import { getIsUnfinishedSurvey } from '../../utils/asyncStorage/survey/getIsUnfisinshedSurvey'
 import { saveunfinishedSurveyToStorage } from '../../utils/asyncStorage/survey/saveUnfinishedSurveyToStorage'
+import LoadingAnimation from '../../components/loadingAnimation'
+import Button from '../../components/button'
 
 
 type LikertQuestionScreenPropsTypes = NativeStackScreenProps<MainNavigatorStackParamList, 'LikertQuestionScreen'>
 
-const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route }) => {
+const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route, navigation }) => {
   const [isQuestionsLoading, setIsQuestionsLoading] = useState(false)
   const [isQuestionsError, setIsQuestionsError] = useState(false)
   const { t } = useTranslation(['translation', 'survey'])
@@ -26,6 +28,7 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
   const step = useCurrentStep()
   const color = useThemeColor()
   const selectedAnswer = useSelectedAnswer()
+
 
   useEffect(() => {
     setIsQuestionsLoading(true)
@@ -47,8 +50,9 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
 
   }, [])
 
-  const asyncGetUnfinishedSurvey = async () => await getIsUnfinishedSurvey(route.params.surveyCategory)
 
+  
+  const asyncGetUnfinishedSurvey = async () => await getIsUnfinishedSurvey(route.params.surveyCategory)
 
 
   //The survey is saved in the storage as an unfinished survey.
@@ -56,7 +60,6 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
 
   useEffect(() => {
     asyncGetUnfinishedSurvey()
-
     return () => {
       if (step > 0 && step < 9) asyncSetUnfinishedSurvey()
 
@@ -87,10 +90,13 @@ const LikertQuestionScreen: React.FC<LikertQuestionScreenPropsTypes> = ({ route 
 
 
 
+
   //if there is no loading or error, return the content; otherwise, return loading or error.
   const renderContent = () => {
-    if (isQuestionsLoading) return <ActivityIndicator />
-    else if (isQuestionsError) return <Text>HATA !</Text>
+    if (isQuestionsLoading) return <LoadingAnimation />
+    else if (isQuestionsError) return <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Button onPress={() => navigation.navigate('LandingScreen')} text={t('questionNotFound') + t('backHome')} />
+    </View>
 
 
     return <>

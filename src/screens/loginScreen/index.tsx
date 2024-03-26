@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import AuthenticationFormInput from '../../components/authenticationFormInput';
 import Button from '../../components/button';
 import AccountActions from '../../components/authAccountActions';
@@ -9,11 +9,12 @@ import { useSendLoginRequestMutation } from '../../Services/LoginService';
 import { saveUserSessionToStorage } from '../../utils/asyncStorage/userSession/saveUserSessionToStorage';
 import { setUserSession } from '../../store/features/auth/actions';
 import { useTranslation } from 'react-i18next';
-import { ActivityIndicator, StyleSheet, Text, useColorScheme } from 'react-native';
+import { ActivityIndicator, Alert, StyleSheet, Text, View, useColorScheme } from 'react-native';
 import AuthScreensLayout from '../../layouts/authScreensLayout';
 import { Colors } from '../../style/colors';
 import commonStyles from '../../style/commonStyles'
 import { AuthScreens } from '../../types/authScreensEnum';
+import LoadingAnimation from '../../components/loadingAnimation';
 
 type LoginScreenPropsTypes = NativeStackScreenProps<AuthenticationNavigatorStackParamList, 'LoginScreen'>
 
@@ -25,6 +26,8 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   const color = Colors[theme!]
 
 
+ 
+
   const [sendLoginRequest, { isError, isLoading }] = useSendLoginRequestMutation()
 
   const handleLoginRequest = async () => {
@@ -33,13 +36,17 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
       password: password
     }
 
+    console.log('worked');
+    
     try {
       const response = await sendLoginRequest(credentials)
+      console.log(response);
 
-      //if there is no error and there is data save user to asyncstorage
-      if (!response?.error && response?.data) {
+      //If there is no error and data exists, save the user to AsyncStorage
+      if (!response.error && response.data) {
         await saveUserSessionToStorage(credentials)
         setUserSession(credentials)
+        
         return
       }
 
@@ -51,46 +58,55 @@ const LoginScreen: React.FC<LoginScreenPropsTypes> = ({ navigation }) => {
   }
 
 
-  const renderContent = () => {
+  if (isLoading) return <LoadingAnimation />
 
-    if (isError) return <Text>Error</Text>
-    else if (isLoading) return <ActivityIndicator />
-
-    return (
-      <>
-        <Text style={[{ color: color.primary }, styles.title]}>{t('welcome')}</Text>
-
-        <AuthenticationFormInput
-          labelText='Nickname'
-          subText={t('privacyMessage')}
-          value={username}
-          onChangeText={setUsername}
-        />
-
-        <AuthenticationFormInput
-          labelText={t('password')}
-          subText={t('forgotPassword')}
-          isSecure
-          isIconWillShow
-          value={password}
-          onChangeText={setPassword}
-        />
-
-        <Button text={t('login')} onPress={handleLoginRequest} />
-
-        <AccountActions text={t('notMember')} buttonText={t('createAccount')} onPress={() => navigation.navigate('SignupScreen')} />
-      </>
-    )
-  }
 
   return (
     <>
       <BackgroundImage />
 
-
       <AuthScreensLayout activeScreen={AuthScreens.login}>
+        <>
+          <Text style={[{ color: color.primary }, styles.title]}>{t('welcome')}</Text>
+
+          <AuthenticationFormInput
+            labelText='Nickname'
+            subText={t('privacyMessage')}
+            value={username}
+            onChangeText={setUsername}
+          />
+
+          <AuthenticationFormInput
+            labelText={t('password')}
+            subText={t('forgotPassword')}
+            isSecure
+            isIconWillShow
+            value={password}
+            onChangeText={setPassword}
+          />
+
+          <Button text={t('login')} onPress={handleLoginRequest} />
+
+          <AccountActions text={t('notMember')} buttonText={t('createAccount')} onPress={() => navigation.navigate('SignupScreen')} />
+        </>
         {
-          renderContent()
+          isError && <>
+            <View style={{
+              alignItems:'center',
+              gap : 6,
+              backgroundColor:'red',
+              paddingVertical : 6,
+              paddingHorizontal : 4,
+              borderRadius : 7,
+            }}>
+              <Text style={{
+                color :'#fff'
+              }}>{t('loginFailed')}</Text>
+              <Text style={{
+                color :'#fff'
+              }}>{t('checkEmailAndPassword')}</Text>
+            </View>
+          </>
         }
       </AuthScreensLayout>
     </>

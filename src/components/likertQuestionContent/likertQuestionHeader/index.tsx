@@ -1,15 +1,14 @@
 import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import HomeIcon from '../../../icons/homeIcon'
 import TimeProgressIcon from '../../../icons/timeProgressIcon'
 import { useThemeColor } from '../../../store/features/theme/hooks'
 import styles from './styles'
 import ProgressBar from '../../progressBar'
 import { useTranslation } from 'react-i18next'
-import { useCurrentStep, useQuestions, useRemainingTime } from '../../../store/features/survey/hooks'
+import { useCurrentStep, useQuestions, useRemainingTime, useSurveyName } from '../../../store/features/survey/hooks'
 import { setRemainingTime } from '../../../store/features/survey/actions'
 import { formatTime } from '../../../utils/date/formatTime'
-
 
 
 const LikertQuestionHeader: React.FC = ( ) => {
@@ -18,6 +17,9 @@ const LikertQuestionHeader: React.FC = ( ) => {
   const step = useCurrentStep() + 1
   const questions = useQuestions()
   const remainingTime = useRemainingTime()
+  const surveyName = useSurveyName()
+
+  const [rotationAngle, setRotationAngle] = useState(0);
   //timer useEffect  --> time = 30min
   useEffect(() => {
 
@@ -27,9 +29,11 @@ const LikertQuestionHeader: React.FC = ( ) => {
       // start timer
       interval = setInterval(() => {
         setRemainingTime(remainingTime - 1)
+      
       }, 1000)
     }
 
+    
     //clear timer
     return () => clearInterval(interval)
   }, [remainingTime])
@@ -45,17 +49,19 @@ const LikertQuestionHeader: React.FC = ( ) => {
         <View style={styles.icon_container}>
           <HomeIcon color={color.midblue} size={13.88} />
         </View>
+      
 
         <View>
-          <TimeProgressIcon size={89} color='#4240BA' progress={10} />
+          <TimeProgressIcon size={89} color='#4240BA' progress={rotationAngle} />
           <Text style={styles.remaining_time_text}>{formatTime(remainingTime)}</Text>
         </View>
 
       </View>
 
       <View style={styles.bottom_content}>
-        <Text style={styles.survey_topic_title}>{t('surveyTopicTitle')}</Text>
+        <Text style={styles.survey_topic_title}>{surveyName}</Text>
         <ProgressBar progress={step * 0.1} step={step} steps={questions.length} />
+        
       </View>
 
     </View>

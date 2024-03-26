@@ -37,5 +37,9 @@
     "finish" : "Finish",
     "surveyCompleted" : "Survey Completed!",
     "creatingData" : "Creating Data...",
-    "questionNotFound" : "Question Not Found"
+    "questionNotFound" : "Question Not Found",
+    "loginFailed" : "Login Failed",
+    "checkEmailAndPassword": "Please check your email and password.",
+    "ok" : "OK",
+    "backHome" : "Back To Home"
 }

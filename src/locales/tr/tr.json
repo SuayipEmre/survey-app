@@ -37,5 +37,9 @@
     "finish" : "Bitir",
     "surveyCompleted" : "Anket Tamamlandı!",
     "creatingData" : "Veriler Oluşturuluyor...",
-    "questionNotFound" : "Soru Bulunamadı"
+    "questionNotFound" : "Soru Bulunamadı",
+    "loginFailed" : "Oturum Açılamadı",
+    "checkEmailAndPassword": "Lütfen email ve şifrenizi kontrol ediniz",
+    "ok" : "Tamam",
+    "backHome" : "Anasayfaya Dön"
 } 

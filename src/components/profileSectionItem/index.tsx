@@ -58,7 +58,7 @@ const ProfileSectionItem: React.FC<ProfileSectionItemPropsTypes> = ({
                                 {
                                     //if log out button is true, logut icon will be visible, otherwise language informations will be visible.
                                 }
-                                <Text style={{ fontSize: 13, lineHeight: 13.38, fontFamily: 'Comfortaa-Regular', }}>{i18n.language}</Text>
+                                <Text style={{ fontSize: 13, lineHeight: 13.38, fontFamily: 'Comfortaa-Regular', color : color.primary }}>{i18n.language}</Text>
                                 <Ant name='right' color={color.primary} size={17} />
                             </> : <Ant name='logout' color={'red'} size={17} />
                         }
